@@ -1,22 +1,26 @@
 {
-  "name": "@coreui/coreui-free-angular-admin-template",
-  "version": "2.2.1",
-  "description": "CoreUI Free Angular 2+ Admin Template",
+  "name": "Istat Dashboard",
+  "version": "1.0.0",
+  "description": "A new dashboard generator",
   "author": {
-    "name": "Łukasz Holeczek",
-    "url": "http://holeczek.pl",
-    "github": "https://github.com/mrholek",
-    "twitter": "https://twitter.com/lukaszholeczek"
+    "name": "MEC Team",
+    "url": "https://github.com/mecdcme/",
+    "github": "https://github.com/mecdcme/"
+ 
   },
   "contributors": [
     {
-      "name": "Andrzej Kopański",
-      "url": "https://github.com/xidedix"
+      "name": "Francesco Amato",
+      "url": "https://github.com/mecdcme/"
+    },
+    {
+      "name": "Mauro Bruno",
+      "url": "https://github.com/mecdcme/"
     }
   ],
-  "homepage": "https://coreui.io/angular",
-  "copyright": "Copyright 2018 creativeLabs Łukasz Holeczek",
-  "license": "MIT",
+  "homepage": "",
+  "copyright": "",
+  "license": "EUPL 1.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
