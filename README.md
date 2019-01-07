@@ -57,3 +57,4 @@ istatboard-template/
 **Mec Team **
 
 ##License
+Istatboard is EUPL-licensed
