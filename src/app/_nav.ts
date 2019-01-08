@@ -1,12 +1,17 @@
 export const navItems = [
   {
+    name: 'Home',
+    url: '/dashboard',
+    icon: 'fa fa-home'
+  },
+   {
+    title: true,
+    name: 'Hackaton'
+  },
+  {
     name: 'Dashboard',
     url: '/dashboard',
-    icon: 'icon-speedometer',
-    badge: {
-      variant: 'info',
-      text: 'NEW'
-    }
+    icon: 'icon-speedometer'
   },
   {
     title: true,
