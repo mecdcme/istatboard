@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ViewDashboardComponent } from './views/view-dashboard/view-dashboard.component';
 import { HomeComponent } from './views/home/home.component';
 import { IstatContainerComponent } from './istat-container/istat-container.component';
+import { ChartsComponent } from './views/charts/charts.component';
+import { ScatterplotComponent } from './views/scatterplot/scatterplot.component';
 
 
 export const routes: Routes = [
@@ -30,12 +32,26 @@ export const routes: Routes = [
         data: {
           title: 'Board'
         }
+      },
+      {
+        path: 'charts',
+        component: ChartsComponent,
+        data: {
+          title: 'Charts'
+        }
+      },
+      {
+        path: 'scatter',
+        component: ScatterplotComponent,
+        data: {
+          title: 'scatter plot'
+        }
       }
 
     ]
   }
 
-];
+]; 
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

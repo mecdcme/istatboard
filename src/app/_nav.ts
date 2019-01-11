@@ -13,14 +13,19 @@ export const navItems = [
     url: '/istatboard',
     icon: 'icon-speedometer'
   },
+ {
+    name: 'Istat Charts',
+    url: '/charts',
+    icon: 'icon-pie-chart'
+  },
+  {
+    name: 'Istat Scatter Plot',
+    url: '/scatter',
+    icon: 'icon-pie-chart'
+  },
   {
     title: true,
     name: 'Components'
-  },
-  {
-    name: 'Charts',
-    url: '/charts',
-    icon: 'icon-pie-chart'
   },
   {
     name: 'Widgets',

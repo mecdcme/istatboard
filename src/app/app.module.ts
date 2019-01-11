@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -28,16 +30,21 @@ import {
 
 import { ViewDashboardComponent } from './views/view-dashboard/view-dashboard.component';
 import { HomeComponent } from './views/home/home.component';
+import { ChartsComponent } from './views/charts/charts.component';
+import { ScatterplotComponent } from './views/scatterplot/scatterplot.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IstatContainerComponent,
     ViewDashboardComponent,
-    HomeComponent
+    HomeComponent,
+    ChartsComponent,
+    ScatterplotComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     AppBreadcrumbModule.forRoot(),
     AppFooterModule,
