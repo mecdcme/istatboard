@@ -1,60 +1,27 @@
-# istatboard
-A new dashboard generator
+# Ihack2019
 
-## Table of Contents
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
 
-* [Installation](#installation)
-* [Usage](#usage)
-* [What's included](#whats-included)
-* [Documentation](#documentation)
-* [License](#license)
+## Development server
 
-## Installation
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-### Clone repo
-``` bash
-# clone the repo
-$ git clone https://github.com/mecdcme/istatboard.git my-project
+## Code scaffolding
 
-# go into app's directory
-$ cd my-project
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-# install app's dependencies
-$ npm install
-```
+## Build
 
-## Usage
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-``` bash
-# serve with hot reload at localhost:4200.
-$ ng serve
+## Running unit tests
 
-# build for production with minification
-$ ng build
-```
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## What's included
+## Running end-to-end tests
 
-Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-```
-istatboard-template/
-├── e2e/
-├── src/
-│   ├── app/
-│   ├── assets/
-│   ├── environments/
-│   ├── scss/
-│   ├── index.html
-│   └── ...
-├── .angular-cli.json
-├── ...
-├── package.json
-└── ...
-```
+## Further help
 
-## Creators
-**Mec Team **
-
-##License
-Istatboard is EUPL-licensed
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

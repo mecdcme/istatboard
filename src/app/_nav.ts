@@ -1,16 +1,16 @@
 export const navItems = [
   {
     name: 'Home',
-    url: '/dashboard',
+    url: '/home',
     icon: 'fa fa-home'
   },
    {
     title: true,
     name: 'Hackaton'
   },
-  {
-    name: 'Dashboard',
-    url: '/dashboard',
+   {
+    name: 'Istat Dashboard',
+    url: '/istatboard',
     icon: 'icon-speedometer'
   },
   {
