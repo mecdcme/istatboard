@@ -1,27 +1,60 @@
-# Ihack2019
+# istatboard
+A new dashboard generator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
+## Table of Contents
 
-## Development server
+* [Installation](#installation)
+* [Usage](#usage)
+* [What's included](#whats-included)
+* [Documentation](#documentation)
+* [License](#license)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installation
 
-## Code scaffolding
+### Clone repo
+``` bash
+# clone the repo
+$ git clone https://github.com/mecdcme/istatboard.git my-project
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# go into app's directory
+$ cd my-project
 
-## Build
+# install app's dependencies
+$ npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Usage
 
-## Running unit tests
+``` bash
+# serve with hot reload at localhost:4200.
+$ ng serve
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# build for production with minification
+$ ng build
+```
 
-## Running end-to-end tests
+## What's included
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
 
-## Further help
+```
+istatboard-template/
+├── e2e/
+├── src/
+│   ├── app/
+│   ├── assets/
+│   ├── environments/
+│   ├── scss/
+│   ├── index.html
+│   └── ...
+├── .angular-cli.json
+├── ...
+├── package.json
+└── ...
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Creators
+**Mec Team **
+
+##License
+Istatboard is EUPL-licensed
