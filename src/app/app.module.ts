@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule }    from '@angular/common/http';
 
 
 
@@ -32,6 +32,7 @@ import { ViewDashboardComponent } from './views/view-dashboard/view-dashboard.co
 import { HomeComponent } from './views/home/home.component';
 import { ChartsComponent } from './views/charts/charts.component';
 import { ScatterplotComponent } from './views/scatterplot/scatterplot.component';
+import { IstatMapsComponent } from './views/istat-maps/istat-maps.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ScatterplotComponent } from './views/scatterplot/scatterplot.component'
     ViewDashboardComponent,
     HomeComponent,
     ChartsComponent,
-    ScatterplotComponent
+    ScatterplotComponent,
+    IstatMapsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,7 @@ import { ScatterplotComponent } from './views/scatterplot/scatterplot.component'
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
+    HttpClientModule,
     ChartsModule
   ],
   providers: [],

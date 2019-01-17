@@ -17,11 +17,14 @@
           </form>
         </div>
         <div class="card-footer">
-          <button   class="btn btn-sm btn-primary" (click)="randomize()"><i class="fa fa-dot-circle-o"></i> Submit</button> &nbsp;
+          <button   class="btn btn-sm btn-primary" (click)="randomize()"><i class="fa fa-dot-circle-o"></i> Line Change</button> &nbsp;
+          <button   class="btn btn-sm btn-primary" (click)="randomizeScatter()"><i class="fa fa-dot-circle-o"></i> Scatter Change</button> &nbsp;
+          <button   class="btn btn-sm btn-primary" (click)="randomizeScatterRemote()"><i class="fa fa-dot-circle-o"></i> Scatter Change Remote</button> &nbsp;
           <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
         </div>
       </div>
     </div>
+    <div class="row">
   <div class="card-columns cols-2">
     <div class="card">
       <div class="card-header">
@@ -48,5 +51,32 @@
     </div>
   
 
+  </div>
+  <div class="card-columns cols-2">
+    <div class="card">
+      <div class="card-header">
+       Scatter Plot
+        <div class="card-header-actions">
+          <a href="http://www.chartjs.org">
+            <small class="text-muted">docs</small>
+          </a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="chart-wrapper">
+          <canvas baseChart class="chart"
+          [datasets]="lineChartData_s"
+          [labels]="lineChartLabels_s"
+          [options]="lineChartOptions_s"
+          [colors]="lineChartColours_s"
+          [legend]="lineChartLegend_s"
+          [chartType]="lineChartType_s"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+    </div>
+  
+  </div>
   </div>
 </div>

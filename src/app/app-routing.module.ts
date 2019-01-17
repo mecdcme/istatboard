@@ -5,6 +5,7 @@ import { HomeComponent } from './views/home/home.component';
 import { IstatContainerComponent } from './istat-container/istat-container.component';
 import { ChartsComponent } from './views/charts/charts.component';
 import { ScatterplotComponent } from './views/scatterplot/scatterplot.component';
+import { IstatMapsComponent } from './views/istat-maps/istat-maps.component';
 
 
 export const routes: Routes = [
@@ -45,6 +46,14 @@ export const routes: Routes = [
         component: ScatterplotComponent,
         data: {
           title: 'scatter plot'
+        }
+      }
+      ,
+      {
+        path: 'maps',
+        component: IstatMapsComponent,
+        data: {
+          title: 'Maps'
         }
       }
 
