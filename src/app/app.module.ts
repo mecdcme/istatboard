@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 
+import { DxPivotGridModule, DxCheckBoxModule } from 'devextreme-angular';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
+
 
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -33,6 +37,7 @@ import { HomeComponent } from './views/home/home.component';
 import { ChartsComponent } from './views/charts/charts.component';
 import { ScatterplotComponent } from './views/scatterplot/scatterplot.component';
 import { IstatMapsComponent } from './views/istat-maps/istat-maps.component';
+import { IstatPivotGridComponent } from './views/istat-pivot-grid/istat-pivot-grid.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +47,8 @@ import { IstatMapsComponent } from './views/istat-maps/istat-maps.component';
     HomeComponent,
     ChartsComponent,
     ScatterplotComponent,
-    IstatMapsComponent
+    IstatMapsComponent,
+    IstatPivotGridComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +59,8 @@ import { IstatMapsComponent } from './views/istat-maps/istat-maps.component';
     AppHeaderModule,
     AppSidebarModule,
     PerfectScrollbarModule,
+    DxPivotGridModule,
+    DxCheckBoxModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     HttpClientModule,
@@ -62,3 +70,4 @@ import { IstatMapsComponent } from './views/istat-maps/istat-maps.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule);

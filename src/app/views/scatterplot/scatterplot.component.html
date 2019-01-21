@@ -1,31 +1,36 @@
 <div class="animated fadeIn">
-    <div class="card-columns cols-2">
+
+  <div class="card-columns cols-2">
     <div class="card">
-        <div class="card-header">
-          <strong>Horizontal</strong> Form
-        </div>
-        <div class="card-body">
-          <form action="" method="post" class="form-horizontal">
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="nitems">Number items</label>
-              <div class="col-md-9">
-                <input type="text" id="nitems" name="nitems" class="form-control" placeholder="Enter number.."  [(ngModel)] = "nitems" >
-              
-              </div>
+      <div class="card-header">
+        <strong>Horizontal</strong> Form
+      </div>
+      <div class="card-body">
+        <form action="" method="post" class="form-horizontal">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="nitems">Number items</label>
+            <div class="col-md-9">
+              <input type="text" id="nitems" name="nitems" class="form-control" placeholder="Enter number.."
+                [(ngModel)]="nitems">
+
             </div>
-            
-          </form>
-        </div>
-        <div class="card-footer">
-          <button   class="btn btn-sm btn-primary" (click)="randomize()"><i class="fa fa-dot-circle-o"></i> Line Change</button> &nbsp;
-          <button   class="btn btn-sm btn-primary" (click)="randomizeScatter()"><i class="fa fa-dot-circle-o"></i> Scatter Change</button> &nbsp;
-          <button   class="btn btn-sm btn-primary" (click)="randomizeScatterRemote()"><i class="fa fa-dot-circle-o"></i> Scatter Change Remote</button> &nbsp;
-          <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
-        </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-sm btn-primary" (click)="randomize()"><i class="fa fa-dot-circle-o"></i> Line Change</button>
+        &nbsp;
+        <button class="btn btn-sm btn-primary" (click)="randomizeScatter()"><i class="fa fa-dot-circle-o"></i> Scatter
+          Change</button> &nbsp;
+        <button class="btn btn-sm btn-primary" (click)="randomizeScatterRemote()"><i class="fa fa-dot-circle-o"></i>
+          Scatter Change Remote</button> &nbsp;
+        <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
       </div>
     </div>
-    <div class="row">
-  <div class="card-columns cols-2">
+  </div>
+
+    <div class="card-columns cols-2">
     <div class="card">
       <div class="card-header">
         Line Chart
@@ -37,25 +42,16 @@
       </div>
       <div class="card-body">
         <div class="chart-wrapper">
-          <canvas baseChart class="chart"
-          [datasets]="lineChartData"
-          [labels]="lineChartLabels"
-          [options]="lineChartOptions"
-          [colors]="lineChartColours"
-          [legend]="lineChartLegend"
-          [chartType]="lineChartType"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
+          <canvas baseChart class="chart" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+            [colors]="lineChartColours" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
         </div>
       </div>
     </div>
-  
 
-  </div>
-  <div class="card-columns cols-2">
     <div class="card">
       <div class="card-header">
-       Scatter Plot
+        Scatter Plot
         <div class="card-header-actions">
           <a href="http://www.chartjs.org">
             <small class="text-muted">docs</small>
@@ -64,19 +60,12 @@
       </div>
       <div class="card-body">
         <div class="chart-wrapper">
-          <canvas baseChart class="chart"
-          [datasets]="lineChartData_s"
-          [labels]="lineChartLabels_s"
-          [options]="lineChartOptions_s"
-          [colors]="lineChartColours_s"
-          [legend]="lineChartLegend_s"
-          [chartType]="lineChartType_s"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
+          <canvas baseChart class="chart" [datasets]="lineChartData_s" [labels]="lineChartLabels_s" [options]="lineChartOptions_s"
+            [colors]="lineChartColours_s" [legend]="lineChartLegend_s" [chartType]="lineChartType_s" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
         </div>
       </div>
     </div>
-  
-  </div>
+
   </div>
 </div>

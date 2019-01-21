@@ -27,13 +27,16 @@ export class IstatMapsComponent implements OnInit {
   vectorLayer: OlVectorLayer;
   rome = fromLonLat([12.5, 41.9]);
 
+  map1: OlMap;
+   
+
   ngOnInit() {
 
     /* Feature and vector */
 
     this.marker = new Feature({
       // Added fromLonLat
-      geometry: new Point(fromLonLat([27.46164, 53.902257]))
+      geometry: new Point(fromLonLat([12.5, 41.91]))
   });
 
   this.vectorSource = new OlVectorSource({
@@ -56,13 +59,19 @@ export class IstatMapsComponent implements OnInit {
     });
 
     this.view = new OlView({
-      center: fromLonLat([27.56164, 53.902257]),
-    // center:this.rome,
+    //  center: fromLonLat([27.56164, 53.902257]),
+     center:this.rome,
       zoom: 6
     });
 
     this.map = new OlMap({
       target: 'map',
+       // Added both layers
+       layers: [this.layer, this.vectorLayer],
+      view: this.view
+    });
+    this.map1 = new OlMap({
+      target: 'map1',
        // Added both layers
        layers: [this.layer, this.vectorLayer],
       view: this.view

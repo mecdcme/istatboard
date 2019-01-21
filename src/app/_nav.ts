@@ -29,6 +29,11 @@ export const navItems = [
     icon: 'icon-pie-chart'
   },
   {
+    name: 'Istat PivotGrid',
+    url: '/pivotgrid',
+    icon: 'icon-pie-chart'
+  },
+  {
     title: true,
     name: 'Components'
   },

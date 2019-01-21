@@ -6,6 +6,7 @@ import { IstatContainerComponent } from './istat-container/istat-container.compo
 import { ChartsComponent } from './views/charts/charts.component';
 import { ScatterplotComponent } from './views/scatterplot/scatterplot.component';
 import { IstatMapsComponent } from './views/istat-maps/istat-maps.component';
+import { IstatPivotGridComponent } from './views/istat-pivot-grid/istat-pivot-grid.component';
 
 
 export const routes: Routes = [
@@ -54,6 +55,13 @@ export const routes: Routes = [
         component: IstatMapsComponent,
         data: {
           title: 'Maps'
+        }
+      } ,
+      {
+        path: 'pivotgrid',
+        component: IstatPivotGridComponent,
+        data: {
+          title: 'Pivot Grid'
         }
       }
 
