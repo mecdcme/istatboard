@@ -24,8 +24,13 @@ export const navItems = [
     icon: 'icon-pie-chart'
   },
   {
-    name: 'Istat Map',
+    name: 'Istat Map OpenLayer',
     url: '/maps',
+    icon: 'icon-pie-chart'
+  },
+  {
+    name: 'Istat Map Leaft',
+    url: '/mapsleaft',
     icon: 'icon-pie-chart'
   },
   {

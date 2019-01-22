@@ -77,9 +77,7 @@ export class IstatMapsComponent implements OnInit {
       view: this.view
     });
 
-
-
-
+ 
 
   }
 

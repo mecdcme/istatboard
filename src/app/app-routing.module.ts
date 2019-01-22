@@ -7,6 +7,7 @@ import { ChartsComponent } from './views/charts/charts.component';
 import { ScatterplotComponent } from './views/scatterplot/scatterplot.component';
 import { IstatMapsComponent } from './views/istat-maps/istat-maps.component';
 import { IstatPivotGridComponent } from './views/istat-pivot-grid/istat-pivot-grid.component';
+import { IstatMapLeaftComponent } from './views/istat-map-leaft/istat-map-leaft.component';
 
 
 export const routes: Routes = [
@@ -48,8 +49,7 @@ export const routes: Routes = [
         data: {
           title: 'scatter plot'
         }
-      }
-      ,
+      },
       {
         path: 'maps',
         component: IstatMapsComponent,
@@ -57,6 +57,13 @@ export const routes: Routes = [
           title: 'Maps'
         }
       } ,
+      {
+        path: 'mapsleaft',
+        component: IstatMapLeaftComponent,
+        data: {
+          title: 'Maps Leaft'
+        }
+      },
       {
         path: 'pivotgrid',
         component: IstatPivotGridComponent,
