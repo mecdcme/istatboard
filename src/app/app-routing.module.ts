@@ -8,6 +8,7 @@ import { ScatterplotComponent } from './views/scatterplot/scatterplot.component'
 import { IstatMapsComponent } from './views/istat-maps/istat-maps.component';
 import { IstatPivotGridComponent } from './views/istat-pivot-grid/istat-pivot-grid.component';
 import { IstatMapLeaftComponent } from './views/istat-map-leaft/istat-map-leaft.component';
+import { IstatKendouiComponent } from './views/istat-kendoui/istat-kendoui.component';
 
 
 export const routes: Routes = [
@@ -67,6 +68,14 @@ export const routes: Routes = [
       {
         path: 'pivotgrid',
         component: IstatPivotGridComponent,
+        data: {
+          title: 'Pivot Grid'
+        }
+      }
+      ,
+      {
+        path: 'kendoui',
+        component: IstatKendouiComponent,
         data: {
           title: 'Pivot Grid'
         }

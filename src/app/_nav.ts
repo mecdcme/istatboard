@@ -38,6 +38,11 @@ export const navItems = [
     url: '/pivotgrid',
     icon: 'icon-pie-chart'
   },
+   {
+    name: 'Istat KendoUI',
+    url: '/kendoui',
+    icon: 'icon-pie-chart'
+  },
   {
     title: true,
     name: 'Components'
