@@ -39,8 +39,8 @@ export const navItems = [
     icon: 'icon-pie-chart'
   },
    {
-    name: 'Istat KendoUI',
-    url: '/kendoui',
+    name: 'Istat Grid Map',
+    url: '/gridMap',
     icon: 'icon-pie-chart'
   },
   {

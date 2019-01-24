@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IstatKendouiComponent } from './istat-kendoui.component';
+import { IstatGridMapComponent } from './istat-grid-map.component';
 
-describe('IstatKendouiComponent', () => {
-  let component: IstatKendouiComponent;
-  let fixture: ComponentFixture<IstatKendouiComponent>;
+describe('IstatGridMapComponent', () => {
+  let component: IstatGridMapComponent;
+  let fixture: ComponentFixture<IstatGridMapComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IstatKendouiComponent ]
+      declarations: [ IstatGridMapComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IstatKendouiComponent);
+    fixture = TestBed.createComponent(IstatGridMapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
