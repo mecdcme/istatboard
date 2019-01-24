@@ -8,6 +8,9 @@ import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import OlVectorSource from 'ol/source/Vector';
 import OlVectorLayer from 'ol/layer/Vector';
+import OlKML from 'ol/format/KML';
+import OlBingMaps from 'ol/source/BingMaps';
+ 
 
 import {fromLonLat} from 'ol/proj';
  
@@ -25,12 +28,21 @@ export class IstatMapsComponent implements OnInit {
   marker: Feature;
   vectorSource: OlVectorSource;
   vectorLayer: OlVectorLayer;
+  vectorLayerKlm: OlVectorLayer;
   rome = fromLonLat([12.5, 41.9]);
 
-  map1: OlMap;
-   
+ 
 
   ngOnInit() {
+
+
+    this.vectorLayerKlm = new OlVectorLayer({
+      source: new OlVectorSource({
+        url: 'assets/data/kml/doc.kml',
+        format: new OlKML()
+      })
+    });
+
 
     /* Feature and vector */
 
@@ -60,6 +72,7 @@ export class IstatMapsComponent implements OnInit {
 
     this.view = new OlView({
     //  center: fromLonLat([27.56164, 53.902257]),
+    projection: 'EPSG:3857',
      center:this.rome,
       zoom: 6
     });
@@ -67,17 +80,10 @@ export class IstatMapsComponent implements OnInit {
     this.map = new OlMap({
       target: 'map',
        // Added both layers
-       layers: [this.layer, this.vectorLayer],
+       layers: [this.layer, this.vectorLayerKlm],
       view: this.view
     });
-    this.map1 = new OlMap({
-      target: 'map1',
-       // Added both layers
-       layers: [this.layer, this.vectorLayer],
-      view: this.view
-    });
-
- 
+    
 
   }
 
