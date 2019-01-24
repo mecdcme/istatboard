@@ -41,7 +41,7 @@ import { IstatMapsComponent } from './views/istat-maps/istat-maps.component';
 import { IstatPivotGridComponent } from './views/istat-pivot-grid/istat-pivot-grid.component';
 import { IstatMapLeaftComponent } from './views/istat-map-leaft/istat-map-leaft.component';
 import { IstatKendouiComponent } from './views/istat-kendoui/istat-kendoui.component';
-import { GridModule } from '@progress/kendo-angular-grid';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -72,7 +72,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LeafletModule.forRoot(),
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    GridModule,  
     BrowserAnimationsModule, 
     HttpClientModule,
     ChartsModule
