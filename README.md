@@ -14,7 +14,7 @@ A new dashboard generator
 ### Clone repo
 ``` bash
 # clone the repo
-$ git clone https://github.com/mecdcme/istatboard.git my-project
+$ git clone https://github.com/mecdcme/istatboard.git istatboard
 
 # go into app's directory
 $ cd my-project
