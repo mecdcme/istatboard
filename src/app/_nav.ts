@@ -21,22 +21,22 @@ export const navItems = [
   {
     name: 'Istat Scatter Plot',
     url: '/scatter',
-    icon: 'icon-pie-chart'
+    icon: 'fa fa-bar-chart'
   },
   {
     name: 'Istat Map OpenLayer',
     url: '/maps',
-    icon: 'icon-pie-chart'
+    icon: 'fa fa-map-marker'
   },
   {
     name: 'Istat Map Leaft',
     url: '/mapsleaft',
-    icon: 'icon-pie-chart'
+    icon: 'fa fa-globe'
   },
   {
     name: 'Istat PivotGrid',
     url: '/pivotgrid',
-    icon: 'icon-pie-chart'
+    icon: 'fa fa-table'
   },
    {
     name: 'Istat Grid Map',
