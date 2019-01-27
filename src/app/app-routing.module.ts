@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ViewDashboardComponent } from './views/view-dashboard/view-dashboard.component';
 import { HomeComponent } from './views/home/home.component';
+import { TeamComponent } from './views/team/team.component';
 import { IstatContainerComponent } from './istat-container/istat-container.component';
 import { ChartsComponent } from './views/charts/charts.component';
 import { ScatterplotComponent } from './views/scatterplot/scatterplot.component';
@@ -23,6 +24,13 @@ export const routes: Routes = [
     component: HomeComponent,
     data: {
       title: 'Home'
+    }
+  },
+  {
+    path: 'team',
+    component: TeamComponent,
+    data: {
+      title: 'Our team'
     }
   },
   {

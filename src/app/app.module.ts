@@ -43,6 +43,7 @@ import { IstatMapLeaftComponent } from './views/istat-map-leaft/istat-map-leaft.
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IstatGridMapComponent } from './views/istat-grid-map/istat-grid-map.component';
+import { TeamComponent } from './views/team/team.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { IstatGridMapComponent } from './views/istat-grid-map/istat-grid-map.com
     IstatMapsComponent,
     IstatPivotGridComponent,
     IstatMapLeaftComponent,
-    IstatGridMapComponent
+    IstatGridMapComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,
