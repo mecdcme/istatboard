@@ -30,7 +30,7 @@ export const routes: Routes = [
     path: 'team',
     component: TeamComponent,
     data: {
-      title: 'Our team'
+      title: 'Our Team'
     }
   },
   {
