@@ -1,4 +1,4 @@
-import { Component, OnInit,ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
 import OlMap from 'ol/Map';
 import OlXYZ from 'ol/source/XYZ';
@@ -28,7 +28,7 @@ export class IstatMapsComponent implements OnInit {
   view: OlView;
   marker: Feature;
   featuresKml: Feature;
-  
+
   vectorSource: OlVectorSource;
   vectorLayer: OlVectorLayer;
   vectorLayerKlm: OlVectorLayer;
@@ -36,12 +36,16 @@ export class IstatMapsComponent implements OnInit {
 
   @ViewChild('popup') popup: ElementRef;
   @ViewChild('popup-content') popupContent: ElementRef;
-  @ViewChild('popupCloser') popupCloser: ElementRef;
-  
+
+
 
   ngOnInit() {
+ 
+    this.popup.nativeElement.style.display = "none";
 
-    
+    /**
+           * Create an overlay to anchor the popup to the map.
+           */
 
     this.vectorLayerKlm = new OlVectorLayer({
       source: new OlVectorSource({
@@ -86,38 +90,70 @@ export class IstatMapsComponent implements OnInit {
 
     this.map = new OlMap({
       target: 'map',
-    
+      //   overlays: [this.overlay],
       // Added both layers
       layers: [this.layer, this.vectorLayerKlm],
       view: this.view
     });
 
-  //  this.map.on('singleclick', function(evt) {
-    this.map.on('pointermove', function(evt) {
-      var feature = this.forEachFeatureAtPixel(evt.pixel, function(feature, layer) {
+    //  this.map.on('singleclick', function(evt) {
+    this.map.on('pointermove', function (evt) {
+      var feature = this.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
         return feature;
-    });
-    var coordinate = evt.coordinate;
-    if(feature)   document.getElementById('popup-content').innerHTML =  feature.get('description');
-    //document.getElementById('popup-content').innerHTML = '<code>' + coordinate + '</code>';
-   // this.getOverlays(0).setPosition(coordinate);
-    //this.addOverlay(this.getOverlays(0));
- 
-    var vienna = new Overlay({
-      position: coordinate,
-      element:  document.getElementById('popup')
-    });
-    this.addOverlay(vienna);
+      });
+       if (feature) {
+        console.log(this.getOverlays().getLength());
+     //   document.getElementById('popup').style.display = "inline";
+        _this.popup.nativeElement.style.display = "inline";
+        
+        let coordinate = evt.coordinate;
+     //   document.getElementById('popup-content').innerHTML = feature.get('description');
+        _this.popupContent.nativeElement.innerHTML = feature.get('description');
+
+        let overlay;
+        if (this.getOverlays().getLength() > 0) {
+          overlay = this.getOverlays().getArray()[0];
+          overlay.setPosition(coordinate);
+        }
+        else {
+          overlay = new Overlay({
+            element:_this.popup.nativeElement ,//document.getElementById('popup'),
+            
+            position: coordinate,
+           
+          });
+          this.addOverlay(overlay);
+        }
+        
        
-      
+      }
+      else {
+        document.getElementById('popup').style.display = "none";
+
+      }
+
+
+    });
+
+    var _this = this;
+    this.vectorLayerKlm.getSource().on('change', function (evt) {
+      var source = evt.target;
+      if (source.getState() === 'ready') {
+        var numFeatures = source.getFeatures().length;
+
+        _this.featuresKml = source.getFeatures();
+        // _this.stampa();
+
+
+      }
     });
 
   }
   over(evt) {
     var coordinate = evt.coordinate;
-  //  document.getElementById('popup-content').innerHTML = '<code>' + feature.get('name') + '</code>';
+    //  document.getElementById('popup-content').innerHTML = '<code>' + feature.get('name') + '</code>';
     document.getElementById('popup-content').innerHTML = '<code>' + coordinate + '</code>';
-    
+
   }
 
   stampa() {
@@ -131,7 +167,7 @@ export class IstatMapsComponent implements OnInit {
     //}
 
   }
-  public  centerPolygon(feat: Feature) {
+  public centerPolygon(feat: Feature) {
     console.log('centerPolygon');
 
     //console.log(features_poly[0].geometry.bounds);
@@ -139,11 +175,11 @@ export class IstatMapsComponent implements OnInit {
 
     //this.view.fit(bounds, {padding: [170, 50, 30, 150]});
     this.view.fit(polygon, { padding: [170, 50, 30, 150], constrainResolution: false });
-   
-    for (let entry of  feat.getKeys()) {
-    
+
+    for (let entry of feat.getKeys()) {
+
       console.log(entry); // 1, "string",
-      console.log( feat.get(entry)); // 1, "string",
+      console.log(feat.get(entry)); // 1, "string",
     }
 
   }
@@ -162,6 +198,6 @@ export class IstatMapsComponent implements OnInit {
     //});
   }
 
-  
+
 
 }
