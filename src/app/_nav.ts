@@ -29,11 +29,6 @@ export const navItems = [
     icon: 'fa fa-map-marker'
   },
   {
-    name: 'Istat Map Leaft',
-    url: '/mapsleaft',
-    icon: 'fa fa-globe'
-  },
-  {
     name: 'Istat PivotGrid',
     url: '/pivotgrid',
     icon: 'fa fa-table'
