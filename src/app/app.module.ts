@@ -6,8 +6,6 @@ import { HttpClientModule }    from '@angular/common/http';
 import { DxPivotGridModule, DxCheckBoxModule } from 'devextreme-angular';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import  PivotGridDataSource  from 'devextreme/ui/pivot_grid/data_source';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-
 
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -39,7 +37,6 @@ import { ChartsComponent } from './views/charts/charts.component';
 import { ScatterplotComponent } from './views/scatterplot/scatterplot.component';
 import { IstatMapsComponent } from './views/istat-maps/istat-maps.component';
 import { IstatPivotGridComponent } from './views/istat-pivot-grid/istat-pivot-grid.component';
-import { IstatMapLeaftComponent } from './views/istat-map-leaft/istat-map-leaft.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IstatGridMapComponent } from './views/istat-grid-map/istat-grid-map.component';
@@ -56,7 +53,6 @@ import { TeamComponent } from './views/team/team.component';
     ScatterplotComponent,
     IstatMapsComponent,
     IstatPivotGridComponent,
-    IstatMapLeaftComponent,
     IstatGridMapComponent,
     TeamComponent
   ],
@@ -71,7 +67,6 @@ import { TeamComponent } from './views/team/team.component';
     PerfectScrollbarModule,
     DxPivotGridModule,
     DxCheckBoxModule,
-    LeafletModule.forRoot(),
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     BrowserAnimationsModule, 
