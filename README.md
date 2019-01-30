@@ -17,7 +17,7 @@ A new dashboard generator
 $ git clone https://github.com/mecdcme/istatboard.git istatboard
 
 # go into app's directory
-$ cd my-project
+$ cd istatboard
 
 # install app's dependencies
 $ npm install
@@ -56,5 +56,5 @@ istatboard-template/
 ## Creators
 **Mec Team **
 
-##License
+## License
 Istatboard is EUPL-licensed
