@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { TableData } from './table-data';
+import {Component, OnInit} from '@angular/core';
+import {TableData} from './table-data';
 
 @Component({
   selector: 'app-istat-ngtable',
   templateUrl: './istat-ngtable.component.html',
   styleUrls: ['./istat-ngtable.component.scss']
+ 
 })
 export class IstatNgtableComponent implements OnInit {
   public rows:Array<any> = [];
@@ -26,6 +27,7 @@ export class IstatNgtableComponent implements OnInit {
   public maxSize:number = 5;
   public numPages:number = 1;
   public length:number = 0;
+  public totalItems:number = 0;
 
   public config:any = {
     paging: true,

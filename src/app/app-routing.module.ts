@@ -85,7 +85,7 @@ export const routes: Routes = [
       }
         ,
       {
-        path: 's',
+        path: 'ngTable',
         component: IstatNgtableComponent,
         data: {
           title: 'NgTable'
