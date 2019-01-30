@@ -11,6 +11,7 @@ import { IstatPivotGridComponent } from './views/istat-pivot-grid/istat-pivot-gr
 
 
 import { IstatGridMapComponent } from './views/istat-grid-map/istat-grid-map.component';
+import { IstatNgtableComponent } from './views/istat-ngtable/istat-ngtable.component';
 
 
 export const routes: Routes = [
@@ -80,6 +81,14 @@ export const routes: Routes = [
         component: IstatGridMapComponent,
         data: {
           title: 'Grid Map'
+        }
+      }
+        ,
+      {
+        path: 's',
+        component: IstatNgtableComponent,
+        data: {
+          title: 'NgTable'
         }
       }
 

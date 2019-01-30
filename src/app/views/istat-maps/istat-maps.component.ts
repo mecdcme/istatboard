@@ -13,7 +13,7 @@ import Overlay from 'ol/Overlay';
 
 
 import { fromLonLat } from 'ol/proj';
-import { DivOverlayOptions } from 'leaflet';
+
 
 
 @Component({
@@ -35,13 +35,14 @@ export class IstatMapsComponent implements OnInit {
   rome = fromLonLat([12.5, 41.9]);
 
   @ViewChild('popup') popup: ElementRef;
-  @ViewChild('popup-content') popupContent: ElementRef;
+  @ViewChild('popupContent') popupContent: ElementRef;
 
 
 
   ngOnInit() {
- 
+    let _thisC = this;
     this.popup.nativeElement.style.display = "none";
+
 
     /**
            * Create an overlay to anchor the popup to the map.
@@ -101,14 +102,14 @@ export class IstatMapsComponent implements OnInit {
       var feature = this.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
         return feature;
       });
-       if (feature) {
+      if (feature) {
         console.log(this.getOverlays().getLength());
-     //   document.getElementById('popup').style.display = "inline";
-        _this.popup.nativeElement.style.display = "inline";
-        
+        //   document.getElementById('popup').style.display = "inline";
+        _thisC.popup.nativeElement.style.display = "inline";
+
         let coordinate = evt.coordinate;
-     //   document.getElementById('popup-content').innerHTML = feature.get('description');
-        _this.popupContent.nativeElement.innerHTML = feature.get('description');
+
+        _thisC.popupContent.nativeElement.innerHTML = feature.get('description');
 
         let overlay;
         if (this.getOverlays().getLength() > 0) {
@@ -117,31 +118,31 @@ export class IstatMapsComponent implements OnInit {
         }
         else {
           overlay = new Overlay({
-            element:_this.popup.nativeElement ,//document.getElementById('popup'),
-            
+            element: _thisC.popup.nativeElement,//document.getElementById('popup'),
+
             position: coordinate,
-           
+
           });
           this.addOverlay(overlay);
         }
-        
-       
+
+
       }
       else {
-        document.getElementById('popup').style.display = "none";
+        _thisC.popup.nativeElement.style.display = "none";
 
       }
 
 
     });
 
-    var _this = this;
+
     this.vectorLayerKlm.getSource().on('change', function (evt) {
       var source = evt.target;
       if (source.getState() === 'ready') {
         var numFeatures = source.getFeatures().length;
 
-        _this.featuresKml = source.getFeatures();
+        _thisC.featuresKml = source.getFeatures();
         // _this.stampa();
 
 
@@ -151,8 +152,8 @@ export class IstatMapsComponent implements OnInit {
   }
   over(evt) {
     var coordinate = evt.coordinate;
-    //  document.getElementById('popup-content').innerHTML = '<code>' + feature.get('name') + '</code>';
-    document.getElementById('popup-content').innerHTML = '<code>' + coordinate + '</code>';
+    //    document.getElementById('popup-content').innerHTML = '<code>' + feature.get('name') + '</code>';
+    this.popupContent.nativeElement.innerHTML = '<code>' + coordinate + '</code>';
 
   }
 

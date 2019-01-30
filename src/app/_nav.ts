@@ -27,7 +27,7 @@ export const navItems = [
     name: 'Istat Map OpenLayer',
     url: '/maps',
     icon: 'fa fa-map-marker'
-  },
+  }, 
   {
     name: 'Istat PivotGrid',
     url: '/pivotgrid',
@@ -36,6 +36,11 @@ export const navItems = [
    {
     name: 'Istat Grid Map',
     url: '/gridMap',
+    icon: 'icon-pie-chart'
+  },
+  {
+    name: 'Istat Ng Table',
+    url: '/ngTable',
     icon: 'icon-pie-chart'
   },
   {

@@ -41,6 +41,7 @@ import { IstatPivotGridComponent } from './views/istat-pivot-grid/istat-pivot-gr
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IstatGridMapComponent } from './views/istat-grid-map/istat-grid-map.component';
 import { TeamComponent } from './views/team/team.component';
+import { IstatNgtableComponent } from './views/istat-ngtable/istat-ngtable.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { TeamComponent } from './views/team/team.component';
     IstatMapsComponent,
     IstatPivotGridComponent,
     IstatGridMapComponent,
-    TeamComponent
+    TeamComponent,
+    IstatNgtableComponent
   ],
   imports: [
     BrowserModule,
