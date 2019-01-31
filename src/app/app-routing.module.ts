@@ -8,9 +8,10 @@ import { ChartsComponent } from './views/charts/charts.component';
 import { ScatterplotComponent } from './views/scatterplot/scatterplot.component';
 import { IstatMapsComponent } from './views/istat-maps/istat-maps.component';
 import { IstatPivotGridComponent } from './views/istat-pivot-grid/istat-pivot-grid.component';
-import { IstatMapLeaftComponent } from './views/istat-map-leaft/istat-map-leaft.component';
+
 
 import { IstatGridMapComponent } from './views/istat-grid-map/istat-grid-map.component';
+import { IstatNgtableComponent } from './views/istat-ngtable/istat-ngtable.component';
 
 
 export const routes: Routes = [
@@ -68,13 +69,6 @@ export const routes: Routes = [
         }
       } ,
       {
-        path: 'mapsleaft',
-        component: IstatMapLeaftComponent,
-        data: {
-          title: 'Maps Leaft'
-        }
-      },
-      {
         path: 'pivotgrid',
         component: IstatPivotGridComponent,
         data: {
@@ -87,6 +81,14 @@ export const routes: Routes = [
         component: IstatGridMapComponent,
         data: {
           title: 'Grid Map'
+        }
+      }
+        ,
+      {
+        path: 'ngTable',
+        component: IstatNgtableComponent,
+        data: {
+          title: 'NgTable'
         }
       }
 

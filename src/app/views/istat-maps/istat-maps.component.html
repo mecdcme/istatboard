@@ -1,4 +1,28 @@
+<div class="animated fadeIn">
 
+  <div class="card-columns cols-2">
+<div class="card">
+  <div class="card-header">
+    Line Chart
+    <div class="card-header-actions">
+      <a href="http://www.chartjs.org">
+        <small class="text-muted">docs</small>
+      </a>
+    </div>
+  </div>
+  <div class="card-body">
+    <button class="btn btn-sm btn-primary" (click)="stampa()"><i class="fa fa-dot-circle-o"></i> Line Change</button>
+    <ul>
+<li *ngFor="let fet of featuresKml">
+  <span>{{ fet.get('name')}}</span>
+  <button class="btn btn-sm btn-primary" (click)="centerPolygon(fet)"><i class="fa fa-dot-circle-o"></i>centra</button>
+
+  
+</li>
+
+    </ul>    
+  </div>
+</div>
       <div class="card">
         <div class="card-header">
           Line Chart
@@ -9,7 +33,12 @@
           </div>
         </div>
         <div class="card-body">
-            <div id="map" class="map"></div>
+            <div id="map" class="map"  ></div>
+        </div>
+        <div id="popup" class="ol-popup" #popup>
+            <div id="popup-content" #popupContent></div>
         </div>
       </div>
 
+    </div>
+  </div>
