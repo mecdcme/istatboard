@@ -1,8 +1,5 @@
  
-.map {
-  height: 100%;
-  width: 100%;
-}
+
 .ol-popup {
   position: absolute;
   background-color: white;
@@ -41,7 +38,4 @@
   position: absolute;
   top: 2px;
   right: 8px;
-}
-.ol-popup-closer:after {
-  content: "✖";
 }

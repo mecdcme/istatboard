@@ -8,16 +8,6 @@ export const navItems = [
     title: true,
     name: 'Hackaton'
   },
-   {
-    name: 'Istat Dashboard',
-    url: '/istatboard',
-    icon: 'icon-speedometer'
-  },
- {
-    name: 'Istat Charts',
-    url: '/charts',
-    icon: 'icon-pie-chart'
-  },
   {
     name: 'Istat Scatter Plot',
     url: '/scatter',
@@ -29,12 +19,12 @@ export const navItems = [
     icon: 'fa fa-map-marker'
   }, 
   {
-    name: 'Istat PivotGrid',
+    name: 'Istat Pivot',
     url: '/pivotgrid',
     icon: 'fa fa-table'
   },
    {
-    name: 'Istat Grid Map',
+    name: 'Istat Pivot Map',
     url: '/gridMap',
     icon: 'icon-pie-chart'
   },
@@ -55,5 +45,15 @@ export const navItems = [
       variant: 'info',
       text: 'NEW'
     }
-  }
+  },
+  {
+   name: 'Istat Dashboard',
+   url: '/istatboard',
+   icon: 'icon-speedometer'
+ },
+{
+   name: 'Istat Charts',
+   url: '/charts',
+   icon: 'icon-pie-chart'
+ }
 ];

@@ -1,4 +1,5 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild,Input ,Output} from '@angular/core';
+ 
 
 import OlMap from 'ol/Map';
 import OlXYZ from 'ol/source/XYZ';
@@ -16,6 +17,7 @@ import { fromLonLat } from 'ol/proj';
 
 
 
+
 @Component({
   selector: 'app-istat-maps',
   templateUrl: './istat-maps.component.html',
@@ -27,17 +29,32 @@ export class IstatMapsComponent implements OnInit {
   layer: OlTileLayer;
   view: OlView;
   marker: Feature;
-  featuresKml: Feature;
+  featuresKml: Feature[];
+  @Input() gridVisible?: boolean = true;
+  
 
   vectorSource: OlVectorSource;
   vectorLayer: OlVectorLayer;
   vectorLayerKlm: OlVectorLayer;
   rome = fromLonLat([12.5, 41.9]);
-
+  lecce = fromLonLat([18.1728, 40.358]);
+   
   @ViewChild('popup') popup: ElementRef;
   @ViewChild('popupContent') popupContent: ElementRef;
 
+  public rowsFeature:Array<any> = [];
+  public columnsFeature:Array<any> = [
+    {title: 'ID', name: 'id', sort:true, filtering: {filterString: '', placeholder: 'Filter by Id'} },
+    {title: 'Terrain type', name: 'name',  sort: true, filtering: {filterString: '', placeholder: 'Filter by type'} },
+    {title: 'Center Map', name: 'center'  },
+  ];
 
+
+
+
+  constructor() {
+    this.gridVisible =true;
+  }
 
   ngOnInit() {
     let _thisC = this;
@@ -60,7 +77,7 @@ export class IstatMapsComponent implements OnInit {
 
     this.marker = new Feature({
       // Added fromLonLat
-      geometry: new Point(fromLonLat([12.5, 41.91]))
+      geometry: new Point(this.lecce)
     });
 
     this.vectorSource = new OlVectorSource({
@@ -79,14 +96,14 @@ export class IstatMapsComponent implements OnInit {
 
     this.layer = new OlTileLayer({
       source: this.source,
-      preload: 4
+      preload:4
     });
 
     this.view = new OlView({
       //  center: fromLonLat([27.56164, 53.902257]),
       projection: 'EPSG:3857',
-      center: this.rome,
-      zoom: 6
+      center: this.lecce,
+      zoom: 9
     });
 
     this.map = new OlMap({
@@ -99,11 +116,16 @@ export class IstatMapsComponent implements OnInit {
 
     //  this.map.on('singleclick', function(evt) {
     this.map.on('pointermove', function (evt) {
+      
+      let features =  this.getFeaturesAtPixel(evt.pixel) ;
+      console.log(features); 
       var feature = this.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
+      
         return feature;
       });
+      
       if (feature) {
-        console.log(this.getOverlays().getLength());
+       
         //   document.getElementById('popup').style.display = "inline";
         _thisC.popup.nativeElement.style.display = "inline";
 
@@ -143,9 +165,13 @@ export class IstatMapsComponent implements OnInit {
         var numFeatures = source.getFeatures().length;
 
         _thisC.featuresKml = source.getFeatures();
-        // _this.stampa();
-
-
+       
+        for (  let feat of _thisC.featuresKml   ) {
+          _thisC.rowsFeature.push({id:feat.getId(),name:feat.get('name'),center:_thisC.button(feat.getId())});
+       }
+       
+    
+       
       }
     });
 
@@ -168,37 +194,25 @@ export class IstatMapsComponent implements OnInit {
     //}
 
   }
-  public centerPolygon(feat: Feature) {
-    console.log('centerPolygon');
-
-    //console.log(features_poly[0].geometry.bounds);
+  public centerPolygon(feat: Feature) { 
     var polygon = feat.getGeometry();
-
-    //this.view.fit(bounds, {padding: [170, 50, 30, 150]});
     this.view.fit(polygon, { padding: [170, 50, 30, 150], constrainResolution: false });
-
-    for (let entry of feat.getKeys()) {
-
-      console.log(entry); // 1, "string",
-      console.log(feat.get(entry)); // 1, "string",
-    }
-
+ 
+  }
+  public centerPolygonId() { 
+   alert('a');
+    //idfeat: string='1';
+    //var feat= this.vectorLayerKlm.getSource().getFeatureById(idfeat);
+   // var polygon = feat.getGeometry();
+   // this.view.fit(polygon, { padding: [170, 50, 30, 150], constrainResolution: false });
+ 
   }
 
-
-  maponsingleclick(evt) {
-    //let pix=evt.pixel;
-
-    let px = evt.pageX;
-    let py = evt.pageY;
-
-    // var hdms = toStringHDMS(toLonLat(coordinate));
-
-    //  this.map.forEachFeatureAtPixel([px,py], function (feature, layer) {
-    //  console.log(feature); // 1, "string",
-    //});
-  }
-
+ 
+  @Output() public button(idfeat: string) {
+       return '<button class="btn btn-sm btn-primary" onClick="centerPolygonId()"><i class="fa fa-map-marker"></i></button>';
+    // return '<button class="btn btn-sm btn-primary" (click)="centerPolygonId(\''+ idfeat + '\')"><i class="fa fa-map-marker"></i></button>';
+}
 
 
 }
