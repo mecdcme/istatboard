@@ -12,26 +12,17 @@
       </div>
       <div class="card-body">
 
-          <ng-table 
-          [rows]="rowsFeature" [columns]="columnsFeature">
-</ng-table>
+        <ng-table [config]="config" (tableChanged)="onChangeTable(config)" [rows]="rows" [columns]="columnsFeature"
+          (cellClicked)="centerPolygonId($event)">
+        </ng-table>
 
-        <table class="  table table-striped">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Terrain type</th>
-              <th>Center Map</th>
-            </tr>
-          </thead>
-          <tr *ngFor="let fet of featuresKml   ">
 
-            <td> <span>{{ fet.getId()}}</span></td>
-            <td> <span>{{ fet.get('name')}}</span></td>
-            <td> <button class="btn btn-sm btn-primary" (click)="centerPolygon(fet)"><i class="fa fa-map-marker"></i></button></td>
+        <pagination *ngIf="config.paging" class="pagination-sm" [(ngModel)]="page" [totalItems]="length" [itemsPerPage]="itemsPerPage"
+          [maxSize]="maxSize" [boundaryLinks]="true" [rotate]="false" (pageChanged)="onChangeTable(config, $event)"
+          (numPages)="numPages = $event">
+        </pagination>
+        <pre *ngIf="config.paging" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>
 
-          </tr>
-        </table>
 
 
       </div>
