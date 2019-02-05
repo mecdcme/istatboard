@@ -48,7 +48,7 @@ export class IstatMapsComponent implements OnInit {
   public columnsFeature:Array<any> = [
     {title: 'ID', name: 'id', sort:true, filtering: {filterString: '', placeholder: 'Filter by Id'} },
     {title: 'Terrain type', name: 'name',  sort: true, filtering: {filterString: '', placeholder: 'Filter by type'} },
-    {title: 'Center Map', name: 'center'  },
+    {title: 'Center Map', name: 'center' },
   ];
 
   public page:number = 1;

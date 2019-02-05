@@ -14,7 +14,7 @@ export const navItems = [
     icon: 'fa fa-bar-chart'
   },
   {
-    name: 'Istat Map OpenLayer',
+    name: 'Istat Map',
     url: '/maps',
     icon: 'fa fa-map-marker'
   }, 

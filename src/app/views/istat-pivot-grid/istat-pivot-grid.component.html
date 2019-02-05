@@ -1,12 +1,5 @@
 <div class="card">
-  <div class="card-header">
-    Pivot
-    <div class="card-header-actions">
-      <a href="http://www.chartjs.org">
-        <small class="text-muted">docs</small>
-      </a>
-    </div>
-  </div>
+  <div class="card-header">Pivot</div>
   <div class="card-body">
     <dx-pivot-grid id="sales" [allowSortingBySummary]="true" [allowSorting]="true" [allowFiltering]="true"
       [showBorders]="true" [height]="490" [dataSource]="pivotGridDataSource" (onContextMenuPreparing)="contextMenuPreparing($event)">

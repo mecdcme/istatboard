@@ -1,45 +1,24 @@
 <div class="animated fadeIn">
- 
-  <div  class="card-columns cols-2">
-    <div *ngIf="gridVisible" class="card">
-      <div class="card-header">
-        Line Chart
-        <div class="card-header-actions">
-          <a href="http://www.chartjs.org">
-            <small class="text-muted">docs</small>
-          </a>
-        </div>
-      </div>
-      <div class="card-body">
 
+  <div class="card-columns cols-2">
+    <div *ngIf="gridVisible" class="card">
+      <div class="card-header">Data</div>
+      <div class="card-body">
         <ng-table [config]="config" (tableChanged)="onChangeTable(config)" [rows]="rows" [columns]="columnsFeature"
           (cellClicked)="centerPolygonId($event)">
         </ng-table>
-
-
         <pagination *ngIf="config.paging" class="pagination-sm" [(ngModel)]="page" [totalItems]="length" [itemsPerPage]="itemsPerPage"
           [maxSize]="maxSize" [boundaryLinks]="true" [rotate]="false" (pageChanged)="onChangeTable(config, $event)"
           (numPages)="numPages = $event">
         </pagination>
         <pre *ngIf="config.paging" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>
-
-
-
       </div>
     </div>
     <div class="card">
-      <div class="card-header">
-        Line Chart
-        <div class="card-header-actions">
-          <a href="http://www.chartjs.org">
-            <small class="text-muted">docs</small>
-          </a>
-        </div>
-      </div>
+      <div class="card-header">Map</div>
       <div class="card-body">
         <div id="map" class="map"></div>
       </div>
-
     </div>
     <div id="popup" class="ol-popup" #popup>
       <div id="popup-content" #popupContent></div>
