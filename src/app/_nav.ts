@@ -23,11 +23,6 @@ export const navItems = [
     url: '/pivotgrid',
     icon: 'fa fa-table'
   },
-   {
-    name: 'Istat Pivot Map',
-    url: '/gridMap',
-    icon: 'icon-pie-chart'
-  },
   {
     name: 'Istat Ng Table',
     url: '/ngTable',

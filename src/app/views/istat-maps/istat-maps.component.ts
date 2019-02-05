@@ -212,6 +212,7 @@ export class IstatMapsComponent implements OnInit {
     //}
 
   }
+  
   public centerPolygon(feat: Feature) { 
     var polygon = feat.getGeometry();
     this.view.fit(polygon, { padding: [170, 50, 30, 150], constrainResolution: false });
@@ -223,9 +224,7 @@ export class IstatMapsComponent implements OnInit {
     let polygon = feat.getGeometry();
     var center =  feat.getGeometry().getCoordinates()[0];
     this.viewPopupFeature(feat,center)
-     this.view.fit(polygon, { padding: [170, 50, 30, 150] });
-     var size = /** @type {module:ol/size~Size} */ (this.map.getSize());
-     this.view.centerOn(polygon.getCoordinates());
+     this.view.fit(polygon, { padding: [170, 50, 30, 150],  nearest: true });
  
   }
 
