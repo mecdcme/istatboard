@@ -1,14 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IstatHackService } from 'src/app/services/istat-hack.service';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
-import { DxPivotGridModule,
+import {
+  DxPivotGridModule,
   DxPivotGridComponent,
   DxChartModule,
-  DxChartComponent } from 'devextreme-angular';
+  DxChartComponent
+} from 'devextreme-angular';
 import { Report } from 'src/app/classes/Report';
 import { IstatServiceService } from 'src/app/services/istat-service.service';
 import CustomStore from 'devextreme/data/custom_store';
- 
+
 
 @Component({
   selector: 'app-hack-pivot',
@@ -19,7 +21,7 @@ export class HackPivotComponent implements OnInit {
   @ViewChild(DxPivotGridComponent) pivotGrid: DxPivotGridComponent;
   @ViewChild(DxChartComponent) chart: DxChartComponent;
 
-  customStore:any;
+  customStore: any;
   pivotGridDataSource: any;
   customDataSource: any;
   showDataFields: boolean = true;
@@ -28,77 +30,61 @@ export class HackPivotComponent implements OnInit {
   showFilterFields: boolean = true;
   ngOnInit() {
   }
-  constructor(private ihackservice: IstatHackService ) {
-
+  constructor(private ihackservice: IstatHackService) {
     this.customStore = new CustomStore({
       load: function (loadOptions: any) {
-          var params = '?';
-
-          params += 'skip=' + loadOptions.skip || 0;
-          params += '&take=' + loadOptions.take || 12;
-
-          if(loadOptions.sort) {
-              params += '&orderby=' + loadOptions.sort[0].selector;
-              if(loadOptions.sort[0].desc) {
-                  params += ' desc';
-              }
-          }
-          return ihackservice.getReportPivotUserWeek(params);
+        return ihackservice.getReportPivotUserWeek("");
       }
-  });
+    });
 
     this.pivotGridDataSource = new PivotGridDataSource({
       fields: [{
         caption: "User",
         width: 120,
         dataField: "user",
-        area: "row"
+        area: "filter"
       }, {
         caption: "Activity",
         dataField: "activity",
-        width: 150,
+        width: 120,
         area: "row"
       }, {
-        dataField: "Mood",
-        dataType: "mood",
-        area: "row"
-      }, {
-        dataField: "Place",
-        dataType: "place",
-        area: "row"
-      }, {
-        dataField: "Person",
-        dataType: "person",
+        caption: "Mood",
+        dataField: "mood",
+        width: 120,
         area: "column"
       }, {
+        caption: "Place",
+        dataField: "place",
+        width: 120,
+        area: "filter"
+      }, {
+        caption: "Person",
+        dataField: "person",
+        area: "filter"
+      }, 
+      {
         dataField: "hours",
         dataType: "number",
         summaryType: "sum",
         area: "data"
       }],
-      store:   this.customStore , 
+      store: this.customStore,
       remoteOperations: false,
-      
     });
   }
+
   ngAfterViewInit() {
     this.pivotGrid.instance.bindChart(this.chart.instance, {
       dataFieldsDisplayMode: "splitPanes",
       alternateDataFields: false
     });
   }
-  customizeTooltip(args) {
-    const valueText =     args.originalValue;
-
-    return {
-      html: args.seriesName + "<div class='currency'>" + valueText + "</div>"
-    };
-  }
 
   contextMenuPreparing(e) {
     var dataSource = e.component.getDataSource(),
       sourceField = e.field;
-      console.log('contextMenuPreparing');
+    console.log('contextMenuPreparing');
     if (sourceField) {
       if (!sourceField.groupName || sourceField.groupIndex === 0) {
         e.items.push({
@@ -124,10 +110,9 @@ export class HackPivotComponent implements OnInit {
           dataSource.field(sourceField.index, {
             summaryType: args.itemData.value
           });
-
           dataSource.load();
         },
-          menuItems = [];
+        menuItems = [];
 
         e.items.push({ text: "Summary Type", items: menuItems });
 
@@ -140,7 +125,7 @@ export class HackPivotComponent implements OnInit {
             onItemClick: setSummaryType,
             selected: e.field.summaryType === summaryTypeValue
           });
-        };
+        }
       }
     }
   }

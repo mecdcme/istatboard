@@ -158,3 +158,25 @@ CREATE or REPLACE VIEW `hack`.`view_user_week` AS
 SELECT user, activity, mood, place, person, COUNT(*) AS hours
 FROM hack.ilogdiary 
 GROUP BY user, activity, mood, place, person;
+
+CREATE or REPLACE VIEW `hack`.`view_user_week_join` AS
+SELECT 
+    users.nickname AS username,
+    act.description AS activity,
+    moods.description AS mood,
+    places.description AS place,
+    persons.description AS person,
+    COUNT(*) AS hours
+FROM
+    hack.ilogdiary AS log
+        INNER JOIN
+    cls_activities AS act ON log.activity = act.id
+        INNER JOIN
+    cls_moods AS moods ON log.mood = moods.id
+        INNER JOIN
+    cls_persons AS persons ON log.person = persons.id
+        INNER JOIN
+    cls_places AS places ON log.place = places.id
+        INNER JOIN
+    users ON log.user = users.id
+GROUP BY users.nickname, act.description, moods.description, places.description, persons.description;
