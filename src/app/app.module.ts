@@ -6,7 +6,7 @@ import { Ng2TableModule } from 'ng2-table/ng2-table';
 import { PaginationModule } from 'ng2-bootstrap';  
 import { TabsModule } from 'ng2-bootstrap';
 
-import { DxPivotGridModule, DxCheckBoxModule } from 'devextreme-angular';
+import { DxPivotGridModule, DxCheckBoxModule, DxChartModule } from 'devextreme-angular';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 
@@ -74,6 +74,7 @@ import { HackPivotComponent } from './views/hack-pivot/hack-pivot.component';
     PerfectScrollbarModule,
     DxPivotGridModule,
     DxCheckBoxModule,
+    DxChartModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     PaginationModule.forRoot(),
@@ -81,6 +82,8 @@ import { HackPivotComponent } from './views/hack-pivot/hack-pivot.component';
     HttpClientModule,
     Ng2TableModule,
     ChartsModule
+
+    
   
   ],
   providers: [],

@@ -1,8 +1,16 @@
 <div class="card">
   <div class="card-header">Pivot</div>
   <div class="card-body">
+      <dx-chart id="sales-chart">
+          <dxo-common-series-settings type="bar"></dxo-common-series-settings>
+          <dxo-size [height]="320"></dxo-size>
+          <dxo-adaptive-layout [width]="450"></dxo-adaptive-layout>
+          <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip"></dxo-tooltip>
+        </dx-chart>
     <dx-pivot-grid id="sales" [allowSortingBySummary]="true" [allowSorting]="true" [allowFiltering]="true"
       [showBorders]="true" [height]="490" [dataSource]="pivotGridDataSource" (onContextMenuPreparing)="contextMenuPreparing($event)">
+     
+    
       <dxo-field-chooser [height]="500"></dxo-field-chooser>
       <dxo-field-panel [showDataFields]="showDataFields" [showRowFields]="showRowFields" [showColumnFields]="showColumnFields"
         [showFilterFields]="showFilterFields" [allowFieldDragging]="true" [visible]="true">

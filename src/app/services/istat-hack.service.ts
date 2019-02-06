@@ -15,10 +15,15 @@ export class IstatHackService {
    return this.http.get<Report[]>(this.distancesUrl+'/report/userweek');
   };
 
-  getReportUserWeek2():any{
-    this.http.get(this.distancesUrl+'/report/userweek')
-            .toPromise()
-            .then((data: any) => data)
-            .catch(error => { throw 'Data Loading Error' });
+  getReportPivotUserWeek(params:String):any {
+    return  this.http.get(this.distancesUrl+'/report/userweek'+params)
+    .toPromise()
+    .then((data: any) => {
+    
+        return {
+            data: data
+        }
+    })
+    .catch(error => { throw 'Data Loading Error' });
    };
 }

@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IstatHackService } from 'src/app/services/istat-hack.service';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
+import { DxPivotGridModule,
+  DxPivotGridComponent,
+  DxChartModule,
+  DxChartComponent } from 'devextreme-angular';
 import { Report } from 'src/app/classes/Report';
 import { IstatServiceService } from 'src/app/services/istat-service.service';
 import CustomStore from 'devextreme/data/custom_store';
-import { HttpClient } from '@angular/common/http';
+ 
 
 @Component({
   selector: 'app-hack-pivot',
@@ -12,6 +16,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./hack-pivot.component.scss']
 })
 export class HackPivotComponent implements OnInit {
+  @ViewChild(DxPivotGridComponent) pivotGrid: DxPivotGridComponent;
+  @ViewChild(DxChartComponent) chart: DxChartComponent;
 
   customStore:any;
   pivotGridDataSource: any;
@@ -22,7 +28,7 @@ export class HackPivotComponent implements OnInit {
   showFilterFields: boolean = true;
   ngOnInit() {
   }
-  constructor(private ihackservice: IstatHackService,private httpClient:HttpClient ) {
+  constructor(private ihackservice: IstatHackService ) {
 
     this.customStore = new CustomStore({
       load: function (loadOptions: any) {
@@ -37,15 +43,7 @@ export class HackPivotComponent implements OnInit {
                   params += ' desc';
               }
           }
-          return httpClient.get('http://localhost:8080/api/report/userweek')
-              .toPromise()
-              .then((data: any) => {
-                console.log('pippobaudo');
-                  return {
-                      data: data
-                  }
-              })
-              .catch(error => { throw 'Data Loading Error' });
+          return ihackservice.getReportPivotUserWeek(params);
       }
   });
 
@@ -82,6 +80,19 @@ export class HackPivotComponent implements OnInit {
       remoteOperations: false,
       
     });
+  }
+  ngAfterViewInit() {
+    this.pivotGrid.instance.bindChart(this.chart.instance, {
+      dataFieldsDisplayMode: "splitPanes",
+      alternateDataFields: false
+    });
+  }
+  customizeTooltip(args) {
+    const valueText =     args.originalValue;
+
+    return {
+      html: args.seriesName + "<div class='currency'>" + valueText + "</div>"
+    };
   }
 
   contextMenuPreparing(e) {
