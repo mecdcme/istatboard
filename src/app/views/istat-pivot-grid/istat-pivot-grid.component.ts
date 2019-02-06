@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Sale } from 'src/app/classes/Sale';
-import { IstatServiceService } from 'src/app/istat-service.service';
+import { IstatServiceService } from 'src/app/services/istat-service.service';
 
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 

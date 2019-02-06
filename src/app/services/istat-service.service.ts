@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Point } from './classes/Point';
-import { Sale } from './classes/Sale';
+import { Point } from '../classes/Point';
+import { Sale } from '../classes/Sale';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Report } from '../classes/Report';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IstatServiceService {
   private distancesUrl = 'http://localhost:8080/points';
+  private distancesUrl1 = 'http://localhost:8081/api';
   constructor(private http: HttpClient) { }
 
   getPointsLocal(np: number): Point[] {
@@ -23,10 +25,16 @@ export class IstatServiceService {
 
   getPointsRemote(np: number): Observable<Point[]> {
     console.log('getPointsRemote');
-   return this.http.get<Point[]>(this.distancesUrl+'/'+np);
+    return this.http.get<Point[]>(this.distancesUrl+'/'+np);
+  
   };
 
-
+  getReportUserWeek(): Observable<Report[]> {
+    console.log(this.distancesUrl+'/report/userweek')
+    let ret=this.http.get<Report[]>(this.distancesUrl1+'/report/userweek');
+    console.log(ret)
+    return ret;
+   };
 
 /// plot grid
 

@@ -19,8 +19,8 @@ export const navItems = [
     icon: 'fa fa-map-marker'
   }, 
   {
-    name: 'Istat Pivot',
-    url: '/pivotgrid',
+    name: 'Hack Pivot',
+    url: '/hackpivot',
     icon: 'fa fa-table'
   },
   {

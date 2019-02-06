@@ -12,6 +12,7 @@ import { IstatPivotGridComponent } from './views/istat-pivot-grid/istat-pivot-gr
 
 import { IstatGridMapComponent } from './views/istat-grid-map/istat-grid-map.component';
 import { IstatNgtableComponent } from './views/istat-ngtable/istat-ngtable.component';
+import { HackPivotComponent } from './views/hack-pivot/hack-pivot.component';
 
 
 export const routes: Routes = [
@@ -60,12 +61,19 @@ export const routes: Routes = [
         data: {
           title: 'scatter plot'
         }
-      },
+      }, 
       {
         path: 'maps',
         component: IstatMapsComponent,
         data: {
           title: 'Maps'
+        }
+      } ,
+      {
+        path: 'hackpivot',
+        component: HackPivotComponent,
+        data: {
+          title: 'Hack Pivot'
         }
       } ,
       {

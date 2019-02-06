@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Point } from 'src/app/classes/Point';
-import { IstatServiceService } from 'src/app/istat-service.service';
+import { IstatServiceService } from 'src/app/services/istat-service.service';
 
 @Component({
   selector: 'app-scatterplot',
@@ -98,7 +98,7 @@ export class ScatterplotComponent implements OnInit {
 
   public randomizeScatterRemote(): void {
     var array_el: Point[];
-    this.iservice.getPointsRemote(this.nitems).subscribe(results => array_el = results);;;
+    this.iservice.getPointsRemote(this.nitems).subscribe(results => array_el = results);
     console.log(array_el);
     let _lineChartData_s: Array<any> = [{ label: 'Scatter Dataset' + this.nitems, data: array_el }];
     this.lineChartData_s = _lineChartData_s;

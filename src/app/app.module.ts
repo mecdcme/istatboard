@@ -45,6 +45,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IstatGridMapComponent } from './views/istat-grid-map/istat-grid-map.component';
 import { TeamComponent } from './views/team/team.component';
 import { IstatNgtableComponent } from './views/istat-ngtable/istat-ngtable.component';
+import { HackPivotComponent } from './views/hack-pivot/hack-pivot.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { IstatNgtableComponent } from './views/istat-ngtable/istat-ngtable.compo
     IstatPivotGridComponent,
     IstatGridMapComponent,
     TeamComponent,
-    IstatNgtableComponent
+    IstatNgtableComponent,
+    HackPivotComponent
      ],
   imports: [
     BrowserModule,
