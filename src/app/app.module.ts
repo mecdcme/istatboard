@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2TableModule } from 'ng2-table/ng2-table';
+
 import { PaginationModule } from 'ng2-bootstrap';  
 import { TabsModule } from 'ng2-bootstrap';
 

@@ -22,18 +22,28 @@ export class HackPivotComponent implements OnInit {
   @ViewChild(DxChartComponent) chart: DxChartComponent;
 
   customStore: any;
+ 
+
   pivotGridDataSource: any;
   customDataSource: any;
   showDataFields: boolean = true;
   showRowFields: boolean = true;
   showColumnFields: boolean = true;
   showFilterFields: boolean = true;
+  reportList: any[]= [{caption: "User Week", value: "userweek" }, {caption: "User Week Name",dataField: "userweekjoin"},];
+
+  selectedReport = this.reportList[0];
   ngOnInit() {
+  
   }
+ 
+
   constructor(private ihackservice: IstatHackService) {
+
+
     this.customStore = new CustomStore({
       load: function (loadOptions: any) {
-        return ihackservice.getReportPivotUserWeekJoin("");
+        return ihackservice.getReportPivotUser("userweekjoin");
       }
     });
 
@@ -129,5 +139,11 @@ export class HackPivotComponent implements OnInit {
       }
     }
   }
+
+  
+public  onChangeReport(report) {
+     
+    alert(report); 
+}
 }
 
