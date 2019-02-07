@@ -33,7 +33,7 @@ export class HackPivotComponent implements OnInit {
   constructor(private ihackservice: IstatHackService) {
     this.customStore = new CustomStore({
       load: function (loadOptions: any) {
-        return ihackservice.getReportPivotUserWeek("");
+        return ihackservice.getReportPivotUserWeekJoin("");
       }
     });
 

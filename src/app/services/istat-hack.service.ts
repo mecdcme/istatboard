@@ -26,4 +26,17 @@ export class IstatHackService {
     })
     .catch(error => { throw 'Data Loading Error' });
    };
-}
+   getReportPivotUserWeekJoin(params:String):any {
+    return  this.http.get(this.distancesUrl+'/report/userweekjoin'+params)
+    .toPromise()
+    .then((data: any) => {
+    
+        return {
+            data: data
+        }
+    })
+    .catch(error => { throw 'Data Loading Error' });
+   };
+
+
+  }
