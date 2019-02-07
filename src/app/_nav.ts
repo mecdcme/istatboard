@@ -50,5 +50,10 @@ export const navItems = [
    name: 'Istat Charts',
    url: '/charts',
    icon: 'icon-pie-chart'
- }
+ }, 
+ {
+   name: ' Pivot',
+   url: '/pivotgrid',
+   icon: 'fa fa-table'
+ },
 ];
