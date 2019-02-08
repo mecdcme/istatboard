@@ -44,7 +44,7 @@ export class HackPivotComponent implements OnInit {
     this.customStore = new CustomStore({
       load: function (loadOptions: any) {
         return ihackservice.getReportPivotUser("userweekjoin");
-      }
+      }             
     });
 
     this.pivotGridDataSource = new PivotGridDataSource({

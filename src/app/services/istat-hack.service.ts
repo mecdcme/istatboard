@@ -54,4 +54,18 @@ export class IstatHackService {
    };
 
 
+   getTimeReport(): any {
+    console.log(this.distancesUrl+'/report/time')
+    return this.http.get<any>(this.distancesUrl+'/report/time').toPromise()
+    .then((data: any) => {
+    
+        return {
+            data: data
+        }
+    })
+    .catch(error => { throw 'Data Loading Error' });
+   };
+
+  
+
   }

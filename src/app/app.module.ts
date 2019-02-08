@@ -47,6 +47,7 @@ import { IstatGridMapComponent } from './views/istat-grid-map/istat-grid-map.com
 import { TeamComponent } from './views/team/team.component';
 import { IstatNgtableComponent } from './views/istat-ngtable/istat-ngtable.component';
 import { HackPivotComponent } from './views/hack-pivot/hack-pivot.component';
+import { TimereportComponent } from './views/timereport/timereport.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { HackPivotComponent } from './views/hack-pivot/hack-pivot.component';
     IstatGridMapComponent,
     TeamComponent,
     IstatNgtableComponent,
-    HackPivotComponent
+    HackPivotComponent,
+    TimereportComponent
      ],
   imports: [
     BrowserModule,

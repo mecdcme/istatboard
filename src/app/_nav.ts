@@ -27,6 +27,12 @@ export const navItems = [
     name: 'Istat Ng Table',
     url: '/ngTable',
     icon: 'icon-pie-chart'
+  }
+  ,
+  {
+    name: 'Istat Time Report ',
+    url: '/timereport',
+    icon: 'icon-pie-chart'
   },
   {
     title: true,

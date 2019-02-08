@@ -13,6 +13,7 @@ import { IstatPivotGridComponent } from './views/istat-pivot-grid/istat-pivot-gr
 import { IstatGridMapComponent } from './views/istat-grid-map/istat-grid-map.component';
 import { IstatNgtableComponent } from './views/istat-ngtable/istat-ngtable.component';
 import { HackPivotComponent } from './views/hack-pivot/hack-pivot.component';
+import { TimereportComponent } from './views/timereport/timereport.component';
 
 
 export const routes: Routes = [
@@ -74,7 +75,15 @@ export const routes: Routes = [
         component: HackPivotComponent,
         data: {
           title: 'Hack Pivot'
-        }
+        } 
+      }  
+      ,
+      {
+        path: 'timereport',
+        component: TimereportComponent,
+        data: {
+          title: 'Hack time'
+        }  
       } ,
       {
         path: 'pivotgrid',
