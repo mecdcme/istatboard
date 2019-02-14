@@ -1,5 +1,7 @@
 <div class="animated fadeIn">
  
+  <span>{{pippo| async}}</span>
+
     <div class="card">
       <div class="card-header">
         Line Chart
@@ -13,11 +15,10 @@
         <div class="chart-wrapper">
           <canvas baseChart class="chart"
           [datasets]="lineChartData"
-          [labels]="lineChartLabels"
           [options]="lineChartOptions"
           [colors]="lineChartColours"
-          [legend]="lineChartLegend"
-          [chartType]="lineChartType"
+          [labels]="lineChartLabels"
+          [chartType]="chartType" 
           (chartHover)="chartHovered($event)"
           (chartClick)="chartClicked($event)"></canvas>
         </div>

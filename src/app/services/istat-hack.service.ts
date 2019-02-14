@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Report } from '../classes/Report';
+import 'rxjs/add/operator/map'
 
 @Injectable({
   providedIn: 'root'
@@ -56,16 +57,30 @@ export class IstatHackService {
 
    getTimeReport(): any {
     console.log(this.distancesUrl+'/report/time')
-    return this.http.get<any>(this.distancesUrl+'/report/time').toPromise()
+    return this.http.get(this.distancesUrl+'/report/time').toPromise()
     .then((data: any) => {
     
         return {
-            data: data
-        }
+            data:data
+      ,   }
     })
     .catch(error => { throw 'Data Loading Error' });
    };
 
   
+    
+   getTimeReport2(): Observable<string[]> {
+    console.log(this.distancesUrl+'/report/time')
+    return this.http.get<string[]>(this.distancesUrl+'/report/time').map((responseData) => responseData);;
+   };
 
+   getTimeReport3(): Array<any>  {
+    console.log(this.distancesUrl+'/report/time')
+    return [
+        {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
+        {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
+        {data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C'}
+      ];
+   };
+  
   }

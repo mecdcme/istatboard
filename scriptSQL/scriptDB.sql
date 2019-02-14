@@ -181,32 +181,15 @@ FROM
     users ON log.user = users.id
 GROUP BY users.nickname, act.description, moods.description, places.description, persons.description;
 
-CREATE or REPLACE VIEW `hack`.`view_user_mood_time` AS
- SELECT
-  user,
-  GROUP_CONCAT(CONCAT('{"', mood,'"}')) moods,GROUP_CONCAT(CONCAT('{"',timepoint,'"}')) timeps
-FROM
-  hack.ilogdiary
-GROUP BY
+ 
+  
+  CREATE or REPLACE VIEW `hack`.`view_user_mood_time` AS
+   
+SELECT
+ user,  JSON_ARRAYAGG(JSON_OBJECt('mood' ,mood,'timepoint', timepoint) )AS moods
+FROM    hack.ilogdiary
+ GROUP BY
   user;
-  
-  
-  SELECT id,
-    CONCAT(
-        '[',
-        COALESCE(
-            GROUP_CONCAT(
-                CONCAT(
-                    '{',
-                    '\"mood\": \"', HEX(mood), '\", ',
-                    '\"timepoint\": \"', HEX(timepoint), '\"',
-                    '}')
-                ORDER BY name ASC
-                SEPARATOR ','),
-            ''),
-        ']') AS bData
-FROM  hack.ilogdiary
-GROUP BY id
-  
+
   
   
