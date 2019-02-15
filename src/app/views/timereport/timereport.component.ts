@@ -132,7 +132,7 @@ export class TimereportComponent implements OnInit {
  
     }
    // resultList.length
-    for (let indexa = 1; indexa < 100; indexa++) {
+    for (let indexa = 1; indexa <resultList.length; indexa++) {
         jsonEntry = resultList[indexa];
         for (let indexk = 1; indexk < keys.length; indexk++) {
           let keyk = keys[indexk];
