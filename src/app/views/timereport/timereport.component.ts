@@ -148,7 +148,7 @@ export class TimereportComponent implements OnInit {
   //  this.lineChartData=_lineChartData_s;
     this.lineChartLabels = _lineChartLabel_s;
 
-    console.log(this.lineChartData);
+ 
 
   }
   // events
