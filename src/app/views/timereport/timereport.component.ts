@@ -10,7 +10,7 @@ import { Point } from '../../classes/Point'
 export class TimereportComponent implements OnInit {
   // lineChart
   public nitems: number = 0;
-  public lineChartLegend: boolean = true;
+  public lineChartLegend: boolean = false;
   public chartType: string = 'line';
 
   public lineChartData: Array<any> = [];
@@ -25,7 +25,7 @@ export class TimereportComponent implements OnInit {
           type: 'time',
           time: {
             unit: 'YYYY-MM-DD hh:mm:ss'
-        }
+          }
 
         }]
       }
@@ -66,10 +66,9 @@ export class TimereportComponent implements OnInit {
 
   ngOnInit() {
 
-    this.resetItems();
-    this.ihackservice.getTimeReport2().subscribe(results => this.updateChart(results));
+    //  this.ihackservice.getTimeReport2().subscribe(results => this.updateChart(results));
 
-
+    this.ihackservice.getTimeReportFile().subscribe(results => this.updateChartFile(results));
   }
 
   resetItems() {
@@ -86,8 +85,8 @@ export class TimereportComponent implements OnInit {
       let index = 0;
       for (let mood of entry.moods) {
         let p = new Point(mood.timepoint, mood.mood);
-        arr_nitems[index] =  mood.mood;
-       
+        arr_nitems[index] = mood.mood;
+
         index++;
       }
       let elem = { label: 'user ' + entry.user, data: arr_nitems };
@@ -110,6 +109,48 @@ export class TimereportComponent implements OnInit {
     console.log(this.lineChartData);
   }
 
+
+  public updateChartFile(resultList) {
+
+    let _lineChartData_s: Array<any> = [];
+    let _lineChartLabel_s: Array<any> = [];
+    
+    //primo elemento
+    let jsonEntry = resultList[0];
+    let arr_nitems: Array<any> = [];
+    let keys = Object.keys(jsonEntry)
+    let firstKey = keys[0];
+    let key;
+    let indexk: number = 0;
+    _lineChartLabel_s.push(jsonEntry[firstKey]);
+    for (let indexk = 1; indexk < keys.length; indexk++) {
+      let keyk = keys[indexk];
+      let p = new Point(jsonEntry[firstKey], jsonEntry[keyk]);
+      //let p =  jsonEntry[keyk];
+     let elem = { label: keys[indexk], data: [p] };
+     this.lineChartData.push(elem);
+ 
+    }
+   // resultList.length
+    for (let indexa = 1; indexa < 100; indexa++) {
+        jsonEntry = resultList[indexa];
+        for (let indexk = 1; indexk < keys.length; indexk++) {
+          let keyk = keys[indexk];
+          let p = new Point(jsonEntry[firstKey], jsonEntry[keyk]);
+         // let p =  jsonEntry[keyk];
+         this.lineChartData[indexk-1].data.push(p);
+     
+        }
+        _lineChartLabel_s.push(jsonEntry[firstKey]);
+    }
+
+ 
+  //  this.lineChartData=_lineChartData_s;
+    this.lineChartLabels = _lineChartLabel_s;
+
+    console.log(this.lineChartData);
+
+  }
   // events
   public chartClicked(e: any): void {
     console.log(e);

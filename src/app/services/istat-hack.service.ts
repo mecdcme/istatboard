@@ -83,4 +83,8 @@ export class IstatHackService {
       ];
    };
   
+   getTimeReportFile(): Observable<string[]> {
+    console.log(this.distancesUrl+'/report/file')
+    return this.http.get<string[]>(this.distancesUrl+'/report/file').map((responseData) => responseData);;
+   };
   }
