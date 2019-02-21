@@ -18,17 +18,17 @@ export class TimereportComponent implements OnInit {
   public chartType: string = this.chartTypeList[0].value;
 
   public lineChartOptions: any = {
-    animation: false,
+
     responsive: true,
     options: {
+      scales: {
+        xAxes: [{ stacked: true }],
+        yAxes: [{ stacked: true }]
+      },
       plugins: {
         colorschemes: {
             scheme: 'brewer.Paired12'  // plugin url https://nagix.github.io/chartjs-plugin-colorschemes/
           }
-        },
-        scales: {
-          xAxes: [{ stacked: true }],
-          yAxes: [{ stacked: true }]
         }
     }
   };
@@ -68,7 +68,7 @@ export class TimereportComponent implements OnInit {
       let keyk = keys[indexk];
      // let p = new Point(jsonEntry[firstKey], jsonEntry[keyk]);
      let p =  jsonEntry[keyk];
-     let elem = { label: keys[indexk], data: [p],stack: indexk};
+     let elem = { label: keys[indexk], data: [p]};
      this.lineChartData.push(elem);
     
  
