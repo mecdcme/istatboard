@@ -87,4 +87,15 @@ export class IstatHackService {
     console.log(this.distancesUrl+'/report/file')
     return this.http.get<string[]>(this.distancesUrl+'/report/file').map((responseData) => responseData);;
    };
+
+   getActivityReport(): Observable<string[]> {
+    console.log(this.distancesUrl+'/report/eumainactivityrate/Romania/Males/Work%20and%20Study')
+    return this.http.get<string[]>(this.distancesUrl+'/report/eumainactivityrate/Romania/Males/Work%20and%20Study').map((responseData) => responseData);;
+   };
+
+   getGenericReport(reportName:String):Observable<string[]> {
+    console.log(this.distancesUrl+ reportName)
+    return this.http.get<string[]>(this.distancesUrl+'/report/'+reportName).map((responseData) => responseData);;
+   };
+
   }
