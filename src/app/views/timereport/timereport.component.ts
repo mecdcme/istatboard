@@ -13,24 +13,37 @@ export class TimereportComponent implements OnInit {
   public lineChartLegend: boolean = false;
   
   public lineChartData: Array<any> = [];
-  public lineChartLabels: Array<any> = [];
-  chartTypeList: any[]= [ {caption: "Bar",value: "bar"},{caption: "Line", value: "line" }, {caption: "Doughnut",value: "doughnut"}, {caption: "Pie",value: "pie"}, {caption: "Radar",value: "Radar"}, {caption: "PolarArea",value: "polarArea"}];
+  public lineChartLabels: Array<any> = []; 
+  chartTypeList: any[]= [ {caption: "Bar",value: "bar"},{caption: "H Bar",value: "horizontalBar"},{caption: "Line", value: "line" }, {caption: "Doughnut",value: "doughnut"}, {caption: "Pie",value: "pie"}, {caption: "Radar",value: "Radar"}, {caption: "PolarArea",value: "polarArea"}];
+  reportList: any[]= [  {caption: "eu_activity_time_hour",value: "eu_activity_time_hour"},{caption: "eu_activity_time", value: "eu_activity_time_hour" }, {caption: "eu_sex_time",value: "eu_sex_time"}, {caption: "eu_sex_time_hour",value: "eu_sex_time_hour"}];
+  
   public chartType: string = this.chartTypeList[0].value;
+  public report: string = this.reportList[0].value;
+
+
+  
+
+
 
   public lineChartOptions: any = {
 
     responsive: true,
-    options: {
-      scales: {
-        xAxes: [{ stacked: true }],
-        yAxes: [{ stacked: true }]
-      },
+    
+     scales: {
+        xAxes: [{
+           stacked: true // this should be set to make the bars stacked
+        }],
+        yAxes: [{
+           stacked: true // this also..
+        }]
+     }
+     ,
       plugins: {
         colorschemes: {
             scheme: 'brewer.Paired12'  // plugin url https://nagix.github.io/chartjs-plugin-colorschemes/
           }
         }
-    }
+    
   };
   
   
@@ -39,15 +52,18 @@ export class TimereportComponent implements OnInit {
 
   constructor(private ihackservice: IstatHackService) { }
 
-
-
   ngOnInit() {
 
-   
-    this.ihackservice.getGenericReport('activity_time_hour').subscribe(results => this.updateChartReport(results));
+    this.getRemoteReport();
   }
 
    
+  public getRemoteReport() {
+    this.lineChartData=[];
+    this.lineChartLabels=[];
+  this.ihackservice.getGenericReport(this.report).subscribe(results => this.updateChartReport(results));
+  }
+
 
   
 

@@ -4,9 +4,14 @@
 
     <div class="card">
       <div class="card-header">
-        <label for="exampleFormControlSelect1"> Chart Type: </label>
-        <select     [(ngModel)]="chartType" >  
+        <label for="exampleFormControlSelect1">  Chart Type: </label>
+        <select   id="exampleFormControlSelect1"     [(ngModel)]="chartType" >  
             <option *ngFor="let charttype of chartTypeList" [ngValue]="charttype.value" >{{charttype.caption}}</option>
+        </select>
+        <label for="exampleFormControlSelect2"> Report:  </label>
+  
+    <select   id="exampleFormControlSelect2"   [(ngModel)]="report" (change)="getRemoteReport()" >  
+            <option *ngFor="let reportI of reportList" [ngValue]="reportI.value" >{{reportI.caption}}</option>
         </select>
         <div class="card-header-actions">
           <a href="http://www.chartjs.org">
