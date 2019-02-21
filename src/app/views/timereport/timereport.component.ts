@@ -43,9 +43,7 @@ export class TimereportComponent implements OnInit {
 
   ngOnInit() {
 
-    //this.ihackservice.getTimeReport2().subscribe(results => this.updateChart(results));
-    //this.ihackservice.getTimeReportFile().subscribe(results => this.updateChartFile(results));
-    //this.ihackservice.getActivityReport().subscribe(results => this.updateChartFile(results));
+   
     this.ihackservice.getGenericReport('activity_time_hour').subscribe(results => this.updateChartReport(results));
   }
 
