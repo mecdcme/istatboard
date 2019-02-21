@@ -1,3 +1,6 @@
+-- ISTATBOARD-SERVER: If you have problems with istatboard-server connection to database
+-- ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root'
+
 create schema if not exists hack;
  
 CREATE TABLE `hack`.`cls_eu_activities` (
@@ -181,4 +184,49 @@ CREATE TABLE `hack`.`eu_main_activity_rate` (
   `year` VARCHAR(45) NULL,
   `value` DECIMAL(5,2) NULL
   );
+
+create or replace view activity_time as
+SELECT 
+	pc.start_time,
+	-- pc.activity,
+	-- ea.activity,
+	-- ws.activity,
+	-- fc.activity,
+	-- le.activity,
+	-- tv.activity,
+	-- tr.activity,
+	-- un.activity,
+	pc.value as val_pers_care,
+	ea.value as val_eating,
+	ws.value as val_work_study,
+	fc.value as val_family_care,
+	le.value as val_leisure,
+	tv.value as val_tv,
+	tr.value as val_travel,
+	un.value as val_unspec
+FROM
+	hack.eu_main_activity_rate as pc,
+	hack.eu_main_activity_rate as ea,
+	hack.eu_main_activity_rate as ws,
+	hack.eu_main_activity_rate as fc,
+	hack.eu_main_activity_rate as le,
+	hack.eu_main_activity_rate as tv,
+	hack.eu_main_activity_rate as tr,
+	hack.eu_main_activity_rate as un
+where
+	pc.start_time = ea.start_time and
+	ea.start_time = ws.start_time and
+	ws.start_time = fc.start_time and
+	fc.start_time = le.start_time and
+	le.start_time = tv.start_time and
+	tv.start_time = tr.start_time and
+	tr.start_time = un.start_time and
+	pc.activity = 'Personal care except eating' and pc.sex = 'Males' and pc.country = 'Romania' and
+	ea.activity = 'Eating' and ea.sex = 'Males' and ea.country = 'Romania' and
+	ws.activity = 'Work and study' and ws.sex = 'Males' and ws.country = 'Romania' and
+	fc.activity = 'Household and family care and related travel' and fc.sex = 'Males' and fc.country = 'Romania' and
+	le.activity = 'Leisure, social and associative life except TV and video' and le.sex = 'Males' and le.country = 'Romania' and
+	tv.activity = 'TV and video' and tv.sex = 'Males' and tv.country = 'Romania' and
+	tr.activity = 'Travel to/from work/study' and tr.sex = 'Males' and tr.country = 'Romania' and
+	un.activity = 'Unspecified time use and travel' and un.sex = 'Males' and un.country = 'Romania';
 
