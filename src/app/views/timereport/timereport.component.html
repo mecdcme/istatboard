@@ -4,7 +4,10 @@
 
     <div class="card">
       <div class="card-header">
-        Line Chart
+        <label for="exampleFormControlSelect1"> Chart Type: </label>
+        <select     [(ngModel)]="chartType" >  
+            <option *ngFor="let charttype of chartTypeList" [ngValue]="charttype.value" >{{charttype.caption}}</option>
+        </select>
         <div class="card-header-actions">
           <a href="http://www.chartjs.org">
             <small class="text-muted">docs</small>
@@ -16,7 +19,7 @@
           <canvas baseChart class="chart"
           [datasets]="lineChartData"
           [options]="lineChartOptions"
-          [colors]="lineChartColours"
+         
           [labels]="lineChartLabels"
           [chartType]="chartType" 
           (chartHover)="chartHovered($event)"

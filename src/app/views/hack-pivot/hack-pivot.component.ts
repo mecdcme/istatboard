@@ -30,7 +30,7 @@ export class HackPivotComponent implements OnInit {
   showRowFields: boolean = true;
   showColumnFields: boolean = true;
   showFilterFields: boolean = true;
-  reportList: any[]= [{caption: "User Week", value: "userweek" }, {caption: "User Week Name",dataField: "userweekjoin"},];
+  reportList: any[]= [{caption: "User Week", value: "userweek" }, {caption: "User Week Name",value: "userweekjoin"},];
 
   selectedReport = this.reportList[0];
   ngOnInit() {

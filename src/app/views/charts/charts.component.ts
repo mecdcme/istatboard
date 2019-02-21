@@ -22,7 +22,9 @@ export class ChartsComponent implements OnInit {
     animation: false,
     responsive: true
   };
-  public lineChartColours: Array<any> = [
+
+  public lineChartColours: Array<any> = [];
+  public lineChartColours1: Array<any> = [
     { // grey
       backgroundColor: 'rgba(148,159,177,0.2)',
       borderColor: 'rgba(148,159,177,1)',

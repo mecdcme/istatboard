@@ -232,17 +232,21 @@ where
 	tr.activity = 'Travel to/from work/study' and tr.sex = 'Males' and tr.country = 'Romania' and
 	un.activity = 'Unspecified time use and travel' and un.sex = 'Males' and un.country = 'Romania';
 
+ 
 
+create or replace view activity_time_hour as
 SELECT 
-	start_time,
-     sum(case  when activity = 'Personal care except eating' then  pc.value end) as val_pers_care,
-     sum(case  when  activity = 'Eating' then  value end)  as val_eating,
-      sum(case  when  activity = 'Work and study' then  value  end) as val_work_study,
-       sum(case  when  activity = 'Household and family care and related travel' then  value end)  as val_family_care,
-        sum(case  when  activity = 'Leisure, social and associative life except TV and video' then  value end)  as val_leisure,
-         sum(case  when  activity = 'TV and video' then  value end)  as val_tv,
-          sum(case  when  activity = 'Travel to/from work/study' then  value  end) as val_travel,
-           sum(case  when  activity = 'Unspecified time use and travel' then  value end)  as val_unspec
+    EXTRACT(hour FROM SUBSTRING(start_time, 5, 6))  as hour,
+     avg(case  when activity = 'Personal care except eating' then  pc.value end) as val_pers_care,
+     avg(case  when  activity = 'Eating' then  value end)  as val_eating,
+      avg(case  when  activity = 'Work and study' then  value  end) as val_work_study,
+       avg(case  when  activity = 'Household and family care and related travel' then  value end)  as val_family_care,
+        avg(case  when  activity = 'Leisure, social and associative life except TV and video' then  value end)  as val_leisure,
+         avg(case  when  activity = 'TV and video' then  value end)  as val_tv,
+          avg(case  when  activity = 'Travel to/from work/study' then  value  end) as val_travel,
+           avg(case  when  activity = 'Unspecified time use and travel' then  value end)  as val_unspec   
       from hack.eu_main_activity_rate  pc
       where sex = 'Males' and country = 'Romania' 
- group by start_time
+      and start_time like 'From%'
+ group by hour
+ 
