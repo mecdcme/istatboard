@@ -1,18 +1,20 @@
 <div class="animated fadeIn">
- 
-  <span>{{pippo| async}}</span>
-
+  
     <div class="card">
       <div class="card-header">
+          <label for="exampleFormControlSelect2"> Report:  </label>
+          <select   id="exampleFormControlSelect2"   [(ngModel)]="reportId" (change)="getRemoteReport()" >  
+              <option value="-1" selected="selected">Select Report... </option>
+              <option *ngFor="let reportI of reportList" [ngValue]="reportI.id" >{{reportI.label}}</option>
+          </select>
+
         <label for="exampleFormControlSelect1">  Chart Type: </label>
-        <select   id="exampleFormControlSelect1"     [(ngModel)]="chartType" >  
-            <option *ngFor="let charttype of chartTypeList" [ngValue]="charttype.value" >{{charttype.caption}}</option>
+        <select   id="exampleFormControlSelect1"     [(ngModel)]="chartType"  (change)="onSelectChartChange()" >  
+            <option *ngFor="let charttype of chartTimeList" [ngValue]="charttype" >{{charttype.caption}}</option>
         </select>
-        <label for="exampleFormControlSelect2"> Report:  </label>
+     
   
-    <select   id="exampleFormControlSelect2"   [(ngModel)]="report" (change)="getRemoteReport()" >  
-            <option *ngFor="let reportI of reportList" [ngValue]="reportI.value" >{{reportI.caption}}</option>
-        </select>
+   
         <div class="card-header-actions">
           <a href="http://www.chartjs.org">
             <small class="text-muted">docs</small>
@@ -26,7 +28,7 @@
           [options]="lineChartOptions"
          
           [labels]="lineChartLabels"
-          [chartType]="chartType" 
+          [chartType]="chartType.value" 
           (chartHover)="chartHovered($event)"
           (chartClick)="chartClicked($event)"></canvas>
         </div>

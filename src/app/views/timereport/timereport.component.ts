@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { IstatHackService } from 'src/app/services/istat-hack.service';
 import { Point } from '../../classes/Point'
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-timereport',
   templateUrl: './timereport.component.html',
@@ -14,13 +17,16 @@ export class TimereportComponent implements OnInit {
   
   public lineChartData: Array<any> = [];
   public lineChartLabels: Array<any> = []; 
-  chartTypeList: any[]= [ {caption: "Bar",value: "bar"},{caption: "H Bar",value: "horizontalBar"},{caption: "Line", value: "line" }, {caption: "Doughnut",value: "doughnut"}, {caption: "Pie",value: "pie"}, {caption: "Radar",value: "Radar"}, {caption: "PolarArea",value: "polarArea"}];
-  reportList: any[]= [  {caption: "eu_activity_time_hour",value: "eu_activity_time_hour"},{caption: "eu_activity_time", value: "eu_activity_time_hour" }, {caption: "eu_sex_time",value: "eu_sex_time"}, {caption: "eu_sex_time_hour",value: "eu_sex_time_hour"}];
+  chartTypeListAll: any[]= [ {caption: "Bar",value: "bar",stack:"false"}, {caption: "Bar Stacked",value: "bar",stack:"false"},{caption: "H Bar",value: "horizontalBar",stack:"false"},{caption: "Line", value: "line",stack:"false" }, {caption: "Doughnut",value: "doughnut",stack:"false" }, {caption: "Pie",value: "pie",stack:"false" }, {caption: "Radar",value: "Radar",stack:"false" }, {caption: "PolarArea",value: "polarArea",stack:"false" }];
+  chartTimeList: any[]= [ {caption: "Bar",value: "bar",stack:false}, {caption: "Bar Stacked",value: "bar",stack:true},{caption: "Bar Horizontal",value: "horizontalBar",stack:false},{caption: "Bar Stacked Horizontal",value: "horizontalBar",stack:true},{caption: "Line", value: "line",stack:false }];
+  chartPieList: any[]= [  {caption: "Doughnut",value: "doughnut"}, {caption: "Pie",value: "pie"}, {caption: "Radar",value: "Radar"}, {caption: "PolarArea",value: "polarArea"}];
   
-  public chartType: string = this.chartTypeList[0].value;
-  public report: string = this.reportList[0].value;
-
-
+  //reportList: any[]= [  {caption: "eu_activity_time_hour",value: "eu_activity_time_hour"},{caption: "eu_activity_time", value: "eu_activity_time_hour" }, {caption: "eu_sex_time",value: "eu_sex_time"}, {caption: "eu_sex_time_hour",value: "eu_sex_time_hour"}];
+  reportList: any[]=[];
+  public chartType: any = this.chartTimeList[0];
+  
+  public reportId: number =-1;
+  public source:string;
   
 
 
@@ -31,10 +37,11 @@ export class TimereportComponent implements OnInit {
     
      scales: {
         xAxes: [{
-           stacked: true // this should be set to make the bars stacked
+          
+           stacked: false // this should be set to make the bars stacked
         }],
         yAxes: [{
-           stacked: true // this also..
+           stacked: false // this also..
         }]
      }
      ,
@@ -50,18 +57,24 @@ export class TimereportComponent implements OnInit {
 
   _this = this;
 
-  constructor(private ihackservice: IstatHackService) { }
+  constructor( private route: ActivatedRoute,private ihackservice: IstatHackService) { }
 
   ngOnInit() {
 
-    this.getRemoteReport();
+    this.source = this.route.snapshot.params['source'];
+ 
+    this.ihackservice.getReportList(this.source).subscribe(list => this.reportList=list);
+   // this.getRemoteReport();
   }
 
    
   public getRemoteReport() {
+    if (this.reportId >0){
     this.lineChartData=[];
     this.lineChartLabels=[];
-  this.ihackservice.getGenericReport(this.report).subscribe(results => this.updateChartReport(results));
+  this.ihackservice.getGenericReport(this.reportId).subscribe(results => this.updateChartReport(results));
+}
+
   }
 
 
@@ -79,6 +92,9 @@ export class TimereportComponent implements OnInit {
     let firstKey = keys[0];
     let key;
     let indexk: number = 0;
+  //  let today = new Date();
+   // today.setHours(jsonEntry[firstKey]);
+    //_lineChartLabel_s.push(today);
     _lineChartLabel_s.push(jsonEntry[firstKey]);
     for (let indexk = 1; indexk < keys.length; indexk++) {
       let keyk = keys[indexk];
@@ -99,7 +115,10 @@ export class TimereportComponent implements OnInit {
          this.lineChartData[indexk-1].data.push(p);
      
         }
-        _lineChartLabel_s.push(jsonEntry[firstKey]);
+    //    let today = new Date();
+     //   today.setHours(jsonEntry[firstKey]);
+       // _lineChartLabel_s.push(today);
+       _lineChartLabel_s.push(jsonEntry[firstKey]);
     }
 
  
@@ -109,6 +128,15 @@ export class TimereportComponent implements OnInit {
  
 
   }
+    // events
+    public onSelectChartChange(): void {
+       
+     // alert(this.chartType.stack);
+      //console.log( this.lineChartOptions.scales);
+      this.lineChartOptions.scales.xAxes[0].stacked= this.chartType.stack;
+      this.lineChartOptions.scales.yAxes[0].stacked= this.chartType.stack;
+ 
+    }
   // events
   public chartClicked(e: any): void {
     console.log(e);

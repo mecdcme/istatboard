@@ -4,34 +4,38 @@ export const navItems = [
     url: '/home',
     icon: 'fa fa-home'
   },
-   {
+  {
     title: true,
-    name: 'Hackaton'
+    name: 'EUROSTAT'
   },
   {
-    name: 'Istat Scatter Plot',
-    url: '/scatter',
-    icon: 'fa fa-bar-chart'
+    name: 'Time Report ',
+    url: '/timereport/EU',
+    icon: 'icon-pie-chart'
+  },
+
+  {
+    name: 'Data Grid',
+    url: '/hackpivot',
+    icon: 'fa fa-table'
+  },
+  {
+    title: true,
+    name: 'Hackaton'
   },
   {
     name: 'Istat Map',
     url: '/maps',
     icon: 'fa fa-map-marker'
-  }, 
+  },
   {
-    name: 'Hack Pivot',
+    name: 'Data Grid',
     url: '/hackpivot',
     icon: 'fa fa-table'
   },
   {
-    name: 'Istat Ng Table',
-    url: '/ngTable',
-    icon: 'icon-pie-chart'
-  }
-  ,
-  {
-    name: 'Istat Time Report ',
-    url: '/timereport',
+    name: 'Time Report ',
+    url: '/timereport/IT',
     icon: 'icon-pie-chart'
   },
   {
@@ -48,18 +52,28 @@ export const navItems = [
     }
   },
   {
-   name: 'Istat Dashboard',
-   url: '/istatboard',
-   icon: 'icon-speedometer'
- },
-{
-   name: 'Istat Charts',
-   url: '/charts',
-   icon: 'icon-pie-chart'
- }, 
- {
-   name: ' Pivot',
-   url: '/pivotgrid',
-   icon: 'fa fa-table'
- },
+    name: 'Istat Dashboard',
+    url: '/istatboard',
+    icon: 'icon-speedometer'
+  },
+  {
+    name: 'Istat Charts',
+    url: '/charts',
+    icon: 'icon-pie-chart'
+  },
+  {
+    name: ' Pivot',
+    url: '/pivotgrid',
+    icon: 'fa fa-table'
+  },
+  {
+    name: 'Istat Scatter Plot',
+    url: '/scatter',
+    icon: 'fa fa-bar-chart'
+  },
+  {
+    name: 'Istat Ng Table',
+    url: '/ngTable',
+    icon: 'icon-pie-chart'
+  }
 ];

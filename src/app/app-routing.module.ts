@@ -79,7 +79,7 @@ export const routes: Routes = [
       }  
       ,
       {
-        path: 'timereport',
+        path: 'timereport/:source',
         component: TimereportComponent,
         data: {
           title: 'Hack time'
