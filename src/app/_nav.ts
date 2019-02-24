@@ -57,6 +57,11 @@ export const navItems = [
     icon: 'icon-speedometer'
   },
   {
+    name: 'Istat Lealeft Map',
+    url: '/lmap',
+    icon: 'fa fa-map-marker'
+   },
+  {
     name: 'Istat Charts',
     url: '/charts',
     icon: 'icon-pie-chart'

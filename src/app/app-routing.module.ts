@@ -14,6 +14,7 @@ import { IstatGridMapComponent } from './views/istat-grid-map/istat-grid-map.com
 import { IstatNgtableComponent } from './views/istat-ngtable/istat-ngtable.component';
 import { HackPivotComponent } from './views/hack-pivot/hack-pivot.component';
 import { TimereportComponent } from './views/timereport/timereport.component';
+import { LealeftMapComponent } from './views/lealeft-map/lealeft-map.component';
 
 
 export const routes: Routes = [
@@ -47,6 +48,13 @@ export const routes: Routes = [
         component: ViewDashboardComponent,
         data: {
           title: 'Board'
+        }
+      },
+      {
+        path: 'lmap',
+        component: LealeftMapComponent,
+        data: {
+          title: 'l map'
         }
       },
       {

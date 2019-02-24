@@ -27,6 +27,7 @@ import { IstatContainerComponent } from './istat-container/istat-container.compo
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 import {
   AppBreadcrumbModule,
@@ -48,6 +49,7 @@ import { TeamComponent } from './views/team/team.component';
 import { IstatNgtableComponent } from './views/istat-ngtable/istat-ngtable.component';
 import { HackPivotComponent } from './views/hack-pivot/hack-pivot.component';
 import { TimereportComponent } from './views/timereport/timereport.component';
+import { LealeftMapComponent } from './views/lealeft-map/lealeft-map.component';
 
 
 @NgModule({
@@ -64,7 +66,8 @@ import { TimereportComponent } from './views/timereport/timereport.component';
     TeamComponent,
     IstatNgtableComponent,
     HackPivotComponent,
-    TimereportComponent
+    TimereportComponent,
+    LealeftMapComponent
      ],
   imports: [
     BrowserModule,
@@ -84,7 +87,8 @@ import { TimereportComponent } from './views/timereport/timereport.component';
     BrowserAnimationsModule,
     HttpClientModule,
     Ng2TableModule,
-    ChartsModule
+    ChartsModule,
+    LeafletModule.forRoot()
 
     
   
