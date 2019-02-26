@@ -77,7 +77,7 @@ export class TimereportComponent implements OnInit {
 
   }
 
-
+ 
   
 
   public updateChartReport(resultList) {

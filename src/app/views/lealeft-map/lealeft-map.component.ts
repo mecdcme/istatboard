@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { tileLayer, latLng, circle, polygon } from 'leaflet';
+import { tileLayer, latLng, circle, polygon, GeoJSON} from 'leaflet';
+
 
 @Component({
   selector: 'app-lealeft-map',
@@ -14,6 +15,18 @@ export class LealeftMapComponent implements OnInit {
     zoom: 5,
     center: latLng(46.879966, -121.726909)
   };
+
+  cartoDB_PositronNoLabels = tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a target="_blank" href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a target="_blank" href="http://cartodb.com/attributions">CartoDB</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
+  });
+
+
+
+ 
+
+ 
 
   layersControl = {
     baseLayers: {
