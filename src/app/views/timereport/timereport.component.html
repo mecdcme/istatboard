@@ -9,6 +9,7 @@
       </select>
 
       <span *ngIf="reportSel.inputs">
+          <label> {{inputI.inputs    }} </label>
         <label> Filter Report: </label>
         <span *ngFor="let inputI of toArray(reportSel.inputs ) ">
             <label> {{inputI.label    }} </label>
