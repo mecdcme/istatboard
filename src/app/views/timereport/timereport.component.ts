@@ -172,7 +172,7 @@ export class TimereportComponent implements OnInit {
     for (let indexk = 0; indexk < 10; indexk++) {
 
       let bb=stringa + indexk
-      aaa.push[bb];
+      aaa.push(bb);
 
     }
     console.log(aaa);
