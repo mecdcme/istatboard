@@ -165,13 +165,14 @@ export class TimereportComponent implements OnInit {
     return JSON.parse(string);
   }
 
-  public getClsValues(string: string) {
-    console.log(string);
+  public getClsValues(stringa: string) {
+    console.log(stringa);
     //  return   this.ihackservice.getClsValues(string).subscribe();
     let aaa: Array<string> = [];
     for (let indexk = 0; indexk < 10; indexk++) {
 
-      aaa[indexk]=string + indexk;
+      let bb=stringa + indexk
+      aaa.push[bb];
 
     }
     console.log(aaa);

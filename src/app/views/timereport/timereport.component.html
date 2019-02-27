@@ -14,7 +14,7 @@
             <label> {{inputI.label    }} </label>
             <label> {{inputI.cls  }} </label>
             <select [(ngModel)]="reportSel" (change)="onSelectReport()">
-          <option *ngFor="let cls of getClsValues(inputI.cls )">{{cls}}</option>
+          <option *ngFor="let cls of getClsValues(inputI.cls )"[ngValue]="inputI.cls">{{cls}}</option>
         </select>
          
         </span>
