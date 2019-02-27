@@ -10,11 +10,11 @@
 
       <span *ngIf="reportSel.inputs">
         <label> Filter Report: </label>
-        <span *ngFor="let inputI of toArray(reportSel.inputs )">
+        <span *ngFor="let inputI of toArray(reportSel.inputs ) | async">
             <label> {{inputI.label    }} </label>
-            <label> {{inputI.cls  }} </label>
+            
             <select [(ngModel)]="reportSel"  >
-          <option *ngFor="let cls of getClsValues(inputI.cls )"[ngValue]="inputI.cls">{{cls}}</option>
+          <option *ngFor="let cls of getClsValues(inputI.cls ) | async "[ngValue]="inputI.cls">{{cls}}</option>
         </select>
          
         </span>
