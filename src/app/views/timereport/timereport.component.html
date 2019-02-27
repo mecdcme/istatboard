@@ -1,37 +1,39 @@
 <div class="animated fadeIn">
-  
-    <div class="card">
-      <div class="card-header">
-          <label for="exampleFormControlSelect2"> Report:  </label>
-          <select   id="exampleFormControlSelect2"   [(ngModel)]="reportId" (change)="getRemoteReport()" >  
-              <option value="-1" selected="selected">Select Report... </option>
-              <option *ngFor="let reportI of reportList" [ngValue]="reportI.id" >{{reportI.label}}</option>
-          </select>
+  <div class="card">
+    <div class="card-header">
 
-        <label for="exampleFormControlSelect1">  Chart Type: </label>
-        <select   id="exampleFormControlSelect1"     [(ngModel)]="chartType"  (change)="onSelectChartChange()" >  
-            <option *ngFor="let charttype of chartTimeList" [ngValue]="charttype" >{{charttype.caption}}</option>
+      <label> Report: </label>
+      <select [(ngModel)]="reportSel" (change)="onSelectReport()">
+        <option selected="selected">Select Report... </option>
+        <option *ngFor="let reportI of reportList" [ngValue]="reportI">{{reportI.label}}</option>
+      </select>
+
+      <span *ngIf="reportSel.inputs">
+        <label> Filter Report: </label>
+        <span *ngFor="let inputI of toArray(reportSel.inputs )">
+            <label> {{inputI.label    }} </label>
+            <label> {{inputI.cls  }} </label>
+            <select [(ngModel)]="reportSel" (change)="onSelectReport()">
+          <option *ngFor="let cls of getClsValues(inputI.cls )">{{cls}}</option>
         </select>
-     
-  
-   
-        <div class="card-header-actions">
-          <a href="http://www.chartjs.org">
-            <small class="text-muted">docs</small>
-          </a>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="chart-wrapper">
-          <canvas baseChart class="chart"
-          [datasets]="lineChartData"
-          [options]="lineChartOptions"
          
-          [labels]="lineChartLabels"
-          [chartType]="chartType.value" 
-          (chartHover)="chartHovered($event)"
+        </span>
+      </span>
+
+      <span class="float-right">
+        <label> Chart Type: </label>
+        <select [(ngModel)]="chartType" (change)="onSelectChartChange()">
+          <option *ngFor="let charttype of chartTimeList" [ngValue]="charttype">{{charttype.caption}}</option>
+        </select>
+      </span>
+    </div>
+
+    <div class="card-body">
+      <div class="chart-wrapper">
+        <canvas baseChart class="chart" #myChart [datasets]="lineChartData" [options]="lineChartOptions"
+          [labels]="lineChartLabels" [chartType]="chartTypeValue" (chartHover)="chartHovered($event)"
           (chartClick)="chartClicked($event)"></canvas>
-        </div>
       </div>
     </div>
+  </div>
 </div>

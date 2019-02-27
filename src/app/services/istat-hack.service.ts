@@ -34,4 +34,10 @@ export class IstatHackService {
     return this.http.get<string[]>(this.distancesUrl+'/report/'+reportId).map((responseData) => responseData);;
    };
 
+   getClsValues(string:string):Observable<string[]> {
+    console.log(this.distancesUrl+ string)
+    return this.http.get<string[]>(this.distancesUrl+'/cls/values/'+string ).map((responseData) => responseData);;
+   };
+
+  
   }
