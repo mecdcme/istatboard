@@ -10,7 +10,7 @@
 
       <span *ngIf="reportSel.inputs">
         <label> Filter Report: </label>
-        <span *ngFor="let inputI of toArray(reportSel.inputs ) | async">
+        <span *ngFor="let inputI of toArray(reportSel.inputs ) ">
             <label> {{inputI.label    }} </label>
             
             <select [(ngModel)]="reportSel"  >
