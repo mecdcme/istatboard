@@ -29,14 +29,14 @@ export class IstatHackService {
     return this.http.get<string[]>(this.distancesUrl+'/report/list/'+source).map((responseData) => responseData);;
    };
 
-   getGenericReport(reportId:number):Observable<string[]> {
+   getGenericReport(reportId:number,q_type:string,params:string):Observable<string[]> {
     console.log(this.distancesUrl+ reportId)
-    return this.http.get<string[]>(this.distancesUrl+'/report/'+reportId).map((responseData) => responseData);;
+    return this.http.get<string[]>(this.distancesUrl+'/'+q_type+'/report/'+reportId+'/'+params).map((responseData) => responseData);;
    };
 
-   getClsValues(string:string):Observable<string[]> {
-    console.log(this.distancesUrl+ string)
-    return this.http.get<string[]>(this.distancesUrl+'/cls/values/'+string ).map((responseData) => responseData);;
+   getClsValues(stringa:string):Observable<string[]> {
+    console.log(this.distancesUrl+ stringa)
+      return this.http.get<string[]>(this.distancesUrl+'/cls/values/'+stringa ).map((responseData) => responseData);;
    };
 
   

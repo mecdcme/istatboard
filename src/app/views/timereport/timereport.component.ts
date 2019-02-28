@@ -22,6 +22,7 @@ export class TimereportComponent implements OnInit {
 
   public lineChartData: Array<any> = [];
   public lineChartLabels: Array<any> = [];
+  public fieldsFilter: Array<any> = [];
   chartTypeListAll: any[] = [{ caption: "Bar", value: "bar", stack: "false" }, { caption: "Bar Stacked", value: "bar", stack: "false" }, { caption: "H Bar", value: "horizontalBar", stack: "false" }, { caption: "Line", value: "line", stack: "false" }, { caption: "Doughnut", value: "doughnut", stack: "false" }, { caption: "Pie", value: "pie", stack: "false" }, { caption: "Radar", value: "Radar", stack: "false" }, { caption: "PolarArea", value: "polarArea", stack: "false" }];
   chartTimeList: any[] = [{ caption: "Bar", value: "bar", stack: false }, { caption: "Line", value: "line", stack: false }, { caption: "Bar Stacked", value: "bar", stack: true }, { caption: "Bar Horizontal", value: "horizontalBar", stack: false }, { caption: "Bar Stacked Horizontal", value: "horizontalBar", stack: true }];
   chartPieList: any[] = [{ caption: "Doughnut", value: "doughnut" }, { caption: "Pie", value: "pie" }, { caption: "Radar", value: "Radar" }, { caption: "PolarArea", value: "polarArea" }];
@@ -76,6 +77,7 @@ export class TimereportComponent implements OnInit {
 
 
   public onSelectReport() {
+    this.fieldsFilter = [];
     if (this.reportSel.id > 0) {
       this.lineChartData = [];
       this.lineChartLabels = [];
@@ -83,18 +85,38 @@ export class TimereportComponent implements OnInit {
         this.getDataReport();
       }
       else if (this.reportSel.query_type == 'proc') {
-        this.getDataReport();
+        console.log(this.reportSel);
+        for (let inputI of JSON.parse(this.reportSel.inputs)) {
+          let elem = { label: inputI.label, field: inputI.field, cls: inputI.cls, data: [] };
+          this.getClsValues(inputI.field, inputI.cls);
+          this.fieldsFilter.push(elem);
+        }
+
+        console.log(this.fieldsFilter);
+
       }
     }
 
   }
-  public processTypeReport(resultList) {
-
-  }
 
   public getDataReport() {
-    this.ihackservice.getGenericReport(this.reportSel.id).subscribe(results => this.updateChartReport(results));
 
+    let params = ''
+if(this.reportSel.inputs)
+{
+    for (let inputI of JSON.parse(this.reportSel.inputs)) {
+      let fiedlId = inputI.field;
+
+      let value: string = (<HTMLInputElement>document.getElementById(fiedlId)).value;
+      console.log(fiedlId);
+      console.log(value);
+      params += fiedlId + '=' + value + '&';
+      // this.getClsValues(inputI.field, inputI.cls) ;
+      //  this.fieldsFilter.push(elem);
+    }
+    if (params.length > 0) params = params.substring(0, params.length - 1);
+  }
+    this.ihackservice.getGenericReport(this.reportSel.id, this.reportSel.query_type, params).subscribe(results => this.updateChartReport(results));
   }
 
 
@@ -165,19 +187,21 @@ export class TimereportComponent implements OnInit {
     return JSON.parse(string);
   }
 
-  public getClsValues(stringa: string) {
-    console.log(stringa);
-    //  return   this.ihackservice.getClsValues(string).subscribe();
-    let aaa: Array<string> = [];
-    for (let indexk = 0; indexk < 10; indexk++) {
 
-      let bb=stringa + indexk
-      aaa.push(bb);
+
+  public getClsValues(field: string, cls: string) {
+
+    return this.ihackservice.getClsValues(cls).subscribe(results => {
+      let item;
+      // find the first occurrence of item with name "k1"
+      item = this.fieldsFilter.find(item => item.field == field);
+      item.data = results;
 
     }
-    console.log(aaa);
-    return  aaa;
+    );
+
   }
+
 
 
 

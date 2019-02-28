@@ -8,14 +8,13 @@
         <option *ngFor="let reportI of reportList" [ngValue]="reportI">{{reportI.label}}</option>
       </select>
 
-      <span *ngIf="reportSel.inputs">
-          <label> {{inputI.inputs    }} </label>
-        <label> Filter Report: </label>
-        <span *ngFor="let inputI of toArray(reportSel.inputs ) ">
-            <label> {{inputI.label    }} </label>
-            
-            <select [(ngModel)]="reportSel"  >
-          <option *ngFor="let cls of getClsValues(inputI.cls )  "[ngValue]="inputI.cls">{{cls}}</option>
+      <span *ngIf="fieldsFilter.length > 0">
+       
+        <label > Filter Report: </label>
+        <span *ngFor="let inputI of fieldsFilter">
+            <label attr.for="{{inputI.label}} "> {{inputI.label    }} </label>
+             <select  attr.id="{{inputI.field}}" attr.name="{{inputI.field}}"   (change)="getDataReport()">
+          <option *ngFor="let cls of inputI.data"   value="{{cls.description}}" >{{cls.description}}</option>
         </select>
          
         </span>
