@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, SimpleChanges } from '@angular/core';
 
 import { IstatHackService } from 'src/app/services/istat-hack.service';
 
@@ -13,6 +13,7 @@ import { BaseChartDirective } from 'ng2-charts';
   styleUrls: ['./timereport.component.scss']
 })
 export class TimereportComponent implements OnInit {
+
 
 
   // lineChart
@@ -33,7 +34,8 @@ export class TimereportComponent implements OnInit {
 
   public chartTypeValue = this.chartType.value;
 
-  public reportSel: any = { id: -1 };
+  //public reportSel: any = { id: -1 };
+  public reportSel: any = -1;
   public source: string;
 
 
@@ -79,8 +81,8 @@ export class TimereportComponent implements OnInit {
   public onSelectReport() {
     this.fieldsFilter = [];
     if (this.reportSel.id > 0) {
-      this.lineChartData = [];
-      this.lineChartLabels = [];
+      this.resetGraph();
+      //  this.lineChartLabels = [];
       if (this.reportSel.query_type == 'table') {
         this.getDataReport();
       }
@@ -99,34 +101,55 @@ export class TimereportComponent implements OnInit {
 
   }
 
-  public getDataReport() {
+  public resetGraph() {
+    this.lineChartData = [];
+    this.lineChartLabels = [];
 
-    let params = ''
-if(this.reportSel.inputs)
-{
-    for (let inputI of JSON.parse(this.reportSel.inputs)) {
-      let fiedlId = inputI.field;
+    this.nitems = 0;
 
-      let value: string = (<HTMLInputElement>document.getElementById(fiedlId)).value;
-      console.log(fiedlId);
-      console.log(value);
-      params += fiedlId + '=' + value + '&';
-      // this.getClsValues(inputI.field, inputI.cls) ;
-      //  this.fieldsFilter.push(elem);
-    }
-    if (params.length > 0) params = params.substring(0, params.length - 1);
+
   }
-    this.ihackservice.getGenericReport(this.reportSel.id, this.reportSel.query_type, params).subscribe(results => this.updateChartReport(results));
+
+  public getDataReport() {
+    this.resetGraph();
+    let params = ''
+    if (this.reportSel.inputs) {
+      for (let inputI of JSON.parse(this.reportSel.inputs)) {
+        let fiedlId = inputI.field;
+
+        let value: string = (<HTMLInputElement>document.getElementById(fiedlId)).value;
+        console.log(fiedlId);
+        console.log(value);
+        params += fiedlId + '=' + value + '&';
+        // this.getClsValues(inputI.field, inputI.cls) ;
+        //  this.fieldsFilter.push(elem);
+      }
+      if (params.length > 0) params = params.substring(0, params.length - 1);
+    }
+    this.ihackservice.getGenericReport(this.reportSel.id, this.reportSel.query_type, params).subscribe(results => {
+
+      if (results.length > 0) {
+        this.updateChartReport(results);
+      }
+      else {
+        let elem = { data: [], label: 'No Data' };
+        this.lineChartData.push(elem);
+        this.lineChartLabels = [];
+
+      }
+
+    });
   }
 
 
 
   public updateChartReport(resultList) {
 
-    let _lineChartData_s: Array<any> = [];
+
     let _lineChartLabel_s: Array<any> = [];
 
     //primo elemento
+
     let jsonEntry = resultList[0];
     let arr_nitems: Array<any> = [];
     let keys = Object.keys(jsonEntry)
@@ -144,7 +167,6 @@ if(this.reportSel.inputs)
       let elem = { label: keys[indexk], data: [p] };
       this.lineChartData.push(elem);
 
-
     }
     // resultList.length
     for (let indexa = 1; indexa < resultList.length; indexa++) {
@@ -161,14 +183,10 @@ if(this.reportSel.inputs)
       // _lineChartLabel_s.push(today);
       _lineChartLabel_s.push(jsonEntry[firstKey]);
     }
-
-
-    //  this.lineChartData=_lineChartData_s;
     this.lineChartLabels = _lineChartLabel_s;
 
-
-
   }
+
   // events
   public onSelectChartChange(): void {
 
