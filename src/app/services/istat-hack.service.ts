@@ -11,17 +11,7 @@ export class IstatHackService {
   private distancesUrl = 'http://localhost:8080/api';
   constructor(private http: HttpClient) { }
 
-   getReportPivotUser(params:String):any {
-    return  this.http.get(this.distancesUrl+'/report/'+params)
-    .toPromise()
-    .then((data: any) => {
-    
-        return {
-            data: data
-        }
-    })
-    .catch(error => { throw 'Data Loading Error' });
-   };
+  
 
    
    getReportList(source:string): Observable<string[]> {
@@ -39,5 +29,27 @@ export class IstatHackService {
       return this.http.get<string[]>(this.distancesUrl+'/cls/values/'+stringa ).map((responseData) => responseData);;
    };
 
-  
+
+   // PIVOT 
+   getPivotList(source:string): Observable<string[]> {
+    console.log(this.distancesUrl+'/pivot/list')
+    return this.http.get<string[]>(this.distancesUrl+'/pivot/list/'+source).map((responseData) => responseData);;
+   };
+
+   getPivotData(pivotId:number):any {
+    console.log(this.distancesUrl+'/pivot/'+pivotId)
+    return  this.http.get(this.distancesUrl+'/pivot/'+pivotId)
+    .toPromise()
+    .then((data: any) => {
+        return {
+            data: data
+        }
+    })
+    .catch(error => { throw 'Data Loading Error' });
+   };
+
+   getGenericPivot(reportId:number,q_type:string,params:string):Observable<string[]> {
+    console.log(this.distancesUrl+ reportId)
+    return this.http.get<string[]>(this.distancesUrl+'/'+q_type+'/pivot/'+reportId+'/'+params).map((responseData) => responseData);;
+   };
   }

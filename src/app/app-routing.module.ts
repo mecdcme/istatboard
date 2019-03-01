@@ -79,7 +79,7 @@ export const routes: Routes = [
         }
       } ,
       {
-        path: 'hackpivot',
+        path: 'hackpivot/:source',
         component: HackPivotComponent,
         data: {
           title: 'Hack Pivot'

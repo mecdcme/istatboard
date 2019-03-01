@@ -1,19 +1,15 @@
+ 
 <div class="card">
-  <div class="card-header">Pivot</div>
-  <div class="card-body">
+  <div class="card-header">
+ 
+      <label> Data: </label>
+      <select [(ngModel)]="pivotSel" (change)="onSelectPivot()">
+        <option selected="selected" value="-1">Select Data... </option>
+        <option *ngFor="let pivotI of pivotList" [ngValue]="pivotI">{{pivotI.label}}</option>
+      </select>
 
-    <div class="form-group">
-        <label for="exampleFormControlSelect1"> Select Report: </label>
-        <select     [(ngModel)]="selectedReport" (change)="onChangeReport($event)">  
-            <option *ngFor="let report of reportList" [ngValue]="report" >{{report.caption}}</option>
-        </select>
-       
-      </div>
+
   </div>
-</div>
-
-<div class="card">
-  <div class="card-header">Pivot</div>
   <div class="card-body">
       <dx-chart id="sales-chart">
           <dxo-common-series-settings type="bar"></dxo-common-series-settings>

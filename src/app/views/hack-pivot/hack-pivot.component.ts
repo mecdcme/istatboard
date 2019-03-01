@@ -10,6 +10,7 @@ import {
 import { Report } from 'src/app/classes/Report';
 import { IstatServiceService } from 'src/app/services/istat-service.service';
 import CustomStore from 'devextreme/data/custom_store';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class HackPivotComponent implements OnInit {
   @ViewChild(DxChartComponent) chart: DxChartComponent;
 
   customStore: any;
- 
+  pivotList: any[] = [];
 
   pivotGridDataSource: any;
   customDataSource: any;
@@ -30,59 +31,40 @@ export class HackPivotComponent implements OnInit {
   showRowFields: boolean = true;
   showColumnFields: boolean = true;
   showFilterFields: boolean = true;
-  reportList: any[]= [{caption: "User Week", value: "userweek" }, {caption: "User Week Name",value: "userweekjoin"},];
 
-  selectedReport = this.reportList[0];
-  ngOnInit() {
-  
-  }
+  public pivotSel: any = -1;
+  public source: string;
  
+  ngOnInit() {
+   
+    this.source = this.route.snapshot.params['source'];
 
-  constructor(private ihackservice: IstatHackService) {
-
-
-    this.customStore = new CustomStore({
-      load: function (loadOptions: any) {
-        return ihackservice.getReportPivotUser("userweekjoin");
-      }             
-    });
-
-    this.pivotGridDataSource = new PivotGridDataSource({
-      fields: [{
-        caption: "User",
-        width: 120,
-        dataField: "user",
-        area: "filter"
-      }, {
-        caption: "Activity",
-        dataField: "activity",
-        width: 120,
-        area: "row"
-      }, {
-        caption: "Mood",
-        dataField: "mood",
-        width: 120,
-        area: "column"
-      }, {
-        caption: "Place",
-        dataField: "place",
-        width: 120,
-        area: "filter"
-      }, {
-        caption: "Person",
-        dataField: "person",
-        area: "filter"
-      }, 
-      {
-        dataField: "hours",
-        dataType: "number",
-        summaryType: "sum",
-        area: "data"
-      }],
-      store: this.customStore,
-      remoteOperations: false,
-    });
+    this.ihackservice.getPivotList(this.source).subscribe(list => this.pivotList = list);
+    // this.getRemoteReport();
   }
+
+
+  constructor(private route: ActivatedRoute, private ihackservice: IstatHackService) { }
+
+  public onSelectPivot() {
+    let _this = this
+     if (this.pivotSel.id > 0) {
+      //this.resetGraph();
+      //  this.lineChartLabels = [];
+ 
+      this.customStore = new CustomStore({
+        load: function (loadOptions: any) {
+          return _this.ihackservice.getPivotData(_this.pivotSel.id);
+        }             
+      });
+      this.pivotGridDataSource = new PivotGridDataSource({ fields:  JSON.parse(this.pivotSel.fields),  store: this.customStore,   remoteOperations: false });
+      }  
+
+  }
+
+
+
+
 
   ngAfterViewInit() {
     this.pivotGrid.instance.bindChart(this.chart.instance, {

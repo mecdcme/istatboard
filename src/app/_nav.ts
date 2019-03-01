@@ -16,7 +16,7 @@ export const navItems = [
 
   {
     name: 'Data Grid',
-    url: '/hackpivot',
+    url: '/hackpivot/EU',
     icon: 'fa fa-table'
   },
   {
@@ -30,7 +30,7 @@ export const navItems = [
   },
   {
     name: 'Data Grid',
-    url: '/hackpivot',
+    url: '/hackpivot/IT',
     icon: 'fa fa-table'
   },
   {
