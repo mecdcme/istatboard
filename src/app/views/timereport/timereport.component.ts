@@ -1,21 +1,15 @@
 import { Component, OnInit, ViewChild, SimpleChanges } from '@angular/core';
-
 import { IstatHackService } from 'src/app/services/istat-hack.service';
-
 import { ActivatedRoute } from '@angular/router';
 import { BaseChartDirective } from 'ng2-charts';
-
-
 
 @Component({
   selector: 'app-timereport',
   templateUrl: './timereport.component.html',
   styleUrls: ['./timereport.component.scss']
 })
+
 export class TimereportComponent implements OnInit {
-
-
-
   // lineChart
 
   public nitems: number = 0;
@@ -31,36 +25,27 @@ export class TimereportComponent implements OnInit {
   //reportList: any[]= [  {caption: "eu_activity_time_hour",value: "eu_activity_time_hour"},{caption: "eu_activity_time", value: "eu_activity_time_hour" }, {caption: "eu_sex_time",value: "eu_sex_time"}, {caption: "eu_sex_time_hour",value: "eu_sex_time_hour"}];
   reportList: any[] = [];
   public chartType: any = this.chartTimeList[0];
-
   public chartTypeValue = this.chartType.value;
 
   //public reportSel: any = { id: -1 };
   public reportSel: any = -1;
   public source: string;
 
-
-
-
   public lineChartOptions: any = {
-
     responsive: true,
-
     scales: {
       xAxes: [{
-
         stacked: false // this should be set to make the bars stacked
       }],
       yAxes: [{
         stacked: false // this also..
       }]
-    }
-    ,
+    },
     plugins: {
       colorschemes: {
         scheme: 'brewer.Paired12'  // plugin url https://nagix.github.io/chartjs-plugin-colorschemes/
       }
     }
-
   };
 
 

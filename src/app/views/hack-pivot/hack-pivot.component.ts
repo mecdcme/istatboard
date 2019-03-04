@@ -31,17 +31,15 @@ export class HackPivotComponent implements OnInit {
   showRowFields: boolean = true;
   showColumnFields: boolean = true;
   showFilterFields: boolean = true;
-  showRowGrandTotals: boolean=false;
-  showColumnGrandTotals: boolean=false;
-  showChart: boolean=true;
+  showRowGrandTotals: boolean = false;
+  showColumnGrandTotals: boolean = false;
+  showChart: boolean = true;
 
   public pivotSel: any = -1;
   public source: string;
- 
-  ngOnInit() {
-   
-    this.source = this.route.snapshot.params['source'];
 
+  ngOnInit() {
+    this.source = this.route.snapshot.params['source'];
     this.ihackservice.getPivotList(this.source).subscribe(list => this.pivotList = list);
     // this.getRemoteReport();
   }
@@ -51,23 +49,18 @@ export class HackPivotComponent implements OnInit {
 
   public onSelectPivot() {
     let _this = this
-     if (this.pivotSel.id > 0) {
+    if (this.pivotSel.id > 0) {
       //this.resetGraph();
       //  this.lineChartLabels = [];
- 
+
       this.customStore = new CustomStore({
         load: function (loadOptions: any) {
           return _this.ihackservice.getPivotData(_this.pivotSel.id);
-        }             
+        }
       });
-      this.pivotGridDataSource = new PivotGridDataSource({ fields:  JSON.parse(this.pivotSel.fields),  store: this.customStore,   remoteOperations: false });
-      }  
-
+      this.pivotGridDataSource = new PivotGridDataSource({ fields: JSON.parse(this.pivotSel.fields), store: this.customStore, remoteOperations: false });
+    }
   }
-
-
-
-
 
   ngAfterViewInit() {
     this.pivotGrid.instance.bindChart(this.chart.instance, {
@@ -107,7 +100,7 @@ export class HackPivotComponent implements OnInit {
           });
           dataSource.load();
         },
-        menuItems = [];
+          menuItems = [];
 
         e.items.push({ text: "Summary Type", items: menuItems });
 
@@ -124,11 +117,5 @@ export class HackPivotComponent implements OnInit {
       }
     }
   }
-
-  
-public  onChangeReport(report) {
-     
-    alert(report); 
-}
 }
 

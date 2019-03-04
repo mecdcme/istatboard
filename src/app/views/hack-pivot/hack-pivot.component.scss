@@ -26,8 +26,9 @@ label {
     height: 20px!important;
 }
 
-.switch-primary .switch-input:checked + .switch-slider::before {
-    border-color: #167495;
+.switch-primary .switch-input:checked + .switch-slider {
+    background-color: #63c2de;
+    border-color: #3c98b9;
 }
 
 .switch-3d .switch-slider::before{

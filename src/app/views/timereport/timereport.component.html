@@ -1,15 +1,12 @@
 <div class="animated fadeIn">
   <div class="card">
     <div class="card-header">
-
       <label> Report: </label>
       <select [(ngModel)]="reportSel" (change)="onSelectReport()">
         <option selected="selected" value="-1">Select Report... </option>
         <option *ngFor="let reportI of reportList" [ngValue]="reportI">{{reportI.label}}</option>
       </select>
-
       <span *ngIf="fieldsFilter.length > 0">
-
         <label> Filter Report: </label>
         <span *ngFor="let inputI of fieldsFilter">
           <label attr.for="{{inputI.label}} "> {{inputI.label    }} </label>
@@ -17,7 +14,6 @@
             <option selected="selected" value="-1"> </option>
             <option *ngFor="let cls of inputI.data" value="{{cls.id}}">{{cls.description}}</option>
           </select>
-
         </span>
       </span>
 
@@ -31,7 +27,7 @@
 
     <div class="card-body">
       <div class="chart-wrapper">
-        <canvas baseChart class="chart" #myChart [datasets]="lineChartData" [options]="lineChartOptions"
+        <canvas baseChart class="chart" height="85%" [datasets]="lineChartData" [options]="lineChartOptions"
           [labels]="lineChartLabels" [chartType]="chartTypeValue" (chartHover)="chartHovered($event)"
           (chartClick)="chartClicked($event)"></canvas>
       </div>

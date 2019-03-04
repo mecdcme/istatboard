@@ -13,3 +13,11 @@ app-istat-container {
 a:hover{
     text-decoration: none;
 }
+
+@media (min-width: 992px){
+    .sidebar-minimized .sidebar .nav-link:hover {
+        width: 50px;
+        background: #20a8d8;
+        color: transparent;
+    }
+}

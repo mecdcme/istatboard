@@ -15,14 +15,14 @@
   <div class="card-body">
     <dx-chart id="chart" [ngStyle]="{'display': showChart ? 'block' : 'none' }" >
       <dxo-common-series-settings type="bar"></dxo-common-series-settings>
-      <dxo-size ></dxo-size>
-      <dxo-adaptive-layout ></dxo-adaptive-layout>
+      <dxo-size></dxo-size>
+      <dxo-adaptive-layout  [width]="450"></dxo-adaptive-layout>
       <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip"></dxo-tooltip>
     </dx-chart>
     <dx-pivot-grid id="grid" [allowSortingBySummary]="true" [allowSorting]="true" [allowFiltering]="true"
       [showRowGrandTotals]="showRowGrandTotals" [showColumnGrandTotals]="showColumnGrandTotals" [showBorders]="true"
-      [height]="650" [dataSource]="pivotGridDataSource" (onContextMenuPreparing)="contextMenuPreparing($event)">
-      <dxo-field-chooser [height]="500"></dxo-field-chooser>
+      [dataSource]="pivotGridDataSource" (onContextMenuPreparing)="contextMenuPreparing($event)">
+      <dxo-field-chooser></dxo-field-chooser>
       <dxo-export [enabled]="true" fileName="Data" [allowExportSelectedData]="true"></dxo-export>
       <dxo-field-panel [showDataFields]="showDataFields" [showRowFields]="showRowFields"
         [showColumnFields]="showColumnFields" [showFilterFields]="showFilterFields" [allowFieldDragging]="true"
