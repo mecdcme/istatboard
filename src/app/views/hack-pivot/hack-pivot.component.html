@@ -1,46 +1,32 @@
- 
 <div class="card">
   <div class="card-header">
- 
-      <label> Data: </label>
-      <select [(ngModel)]="pivotSel" (change)="onSelectPivot()">
-        <option selected="selected" value="-1">Select Data... </option>
-        <option *ngFor="let pivotI of pivotList" [ngValue]="pivotI">{{pivotI.label}}</option>
-      </select>
-
-
+    <label> Data: </label>
+    <select [(ngModel)]="pivotSel" (change)="onSelectPivot()">
+      <option selected="selected" value="-1">Select Data... </option>
+      <option *ngFor="let pivotI of pivotList" [ngValue]="pivotI">{{pivotI.label}}</option>
+    </select>
+    <div class="pull-right">
+        <label class="switch switch-3d switch-primary">
+        <input type="checkbox" class="switch-input" (change)="showChart = !showChart">
+        <span class="switch-slider"></span>
+      </label>
+     </div>
   </div>
   <div class="card-body">
-      <dx-chart id="sales-chart">
-          <dxo-common-series-settings type="bar"></dxo-common-series-settings>
-          <dxo-size [height]="320"></dxo-size>
-          <dxo-adaptive-layout [width]="450"></dxo-adaptive-layout>
-          <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip"></dxo-tooltip>
-        </dx-chart>
-
-    <dx-pivot-grid id="sales" [allowSortingBySummary]="true" [allowSorting]="true" [allowFiltering]="true"
-      [showBorders]="true" [height]="490" [dataSource]="pivotGridDataSource" (onContextMenuPreparing)="contextMenuPreparing($event)">
-     
-    
+    <dx-chart id="chart" [ngStyle]="{'display': showChart ? 'block' : 'none' }" >
+      <dxo-common-series-settings type="bar"></dxo-common-series-settings>
+      <dxo-size ></dxo-size>
+      <dxo-adaptive-layout ></dxo-adaptive-layout>
+      <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip"></dxo-tooltip>
+    </dx-chart>
+    <dx-pivot-grid id="grid" [allowSortingBySummary]="true" [allowSorting]="true" [allowFiltering]="true"
+      [showRowGrandTotals]="showRowGrandTotals" [showColumnGrandTotals]="showColumnGrandTotals" [showBorders]="true"
+      [height]="650" [dataSource]="pivotGridDataSource" (onContextMenuPreparing)="contextMenuPreparing($event)">
       <dxo-field-chooser [height]="500"></dxo-field-chooser>
-      <dxo-export [enabled]="true" fileName="Employees" [allowExportSelectedData]="true"></dxo-export>
-      <dxo-field-panel [showDataFields]="showDataFields" [showRowFields]="showRowFields" [showColumnFields]="showColumnFields"
-        [showFilterFields]="showFilterFields" [allowFieldDragging]="true" [visible]="true">
+      <dxo-export [enabled]="true" fileName="Data" [allowExportSelectedData]="true"></dxo-export>
+      <dxo-field-panel [showDataFields]="showDataFields" [showRowFields]="showRowFields"
+        [showColumnFields]="showColumnFields" [showFilterFields]="showFilterFields" [allowFieldDragging]="true"
+        [visible]="true">
       </dxo-field-panel>
     </dx-pivot-grid>
-    <div class="options">
-      <div class="caption">Options</div>
-      <div class="option">
-        <dx-check-box text="Show Data Fields" [(value)]="showDataFields"></dx-check-box>
-      </div>
-      <div class="option">
-        <dx-check-box text="Show Row Fields" [(value)]="showRowFields"></dx-check-box>
-      </div>
-      <div class="option">
-        <dx-check-box text="Show Column Fields" [(value)]="showColumnFields"></dx-check-box>
-      </div>
-      <div class="option">
-        <dx-check-box text="Show Filter Fields" [(value)]="showFilterFields"></dx-check-box>
-      </div>
-    </div>
   </div>

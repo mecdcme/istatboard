@@ -19,4 +19,18 @@
 label {
     padding-right: 5px;
     padding-left: 5px;
+    margin-bottom: 0px;
+}
+
+.switch{
+    height: 20px!important;
+}
+
+.switch-primary .switch-input:checked + .switch-slider::before {
+    border-color: #167495;
+}
+
+.switch-3d .switch-slider::before{
+    height: 20px!important;
+    width:  20px!important;
 }

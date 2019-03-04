@@ -31,6 +31,9 @@ export class HackPivotComponent implements OnInit {
   showRowFields: boolean = true;
   showColumnFields: boolean = true;
   showFilterFields: boolean = true;
+  showRowGrandTotals: boolean=false;
+  showColumnGrandTotals: boolean=false;
+  showChart: boolean=true;
 
   public pivotSel: any = -1;
   public source: string;
