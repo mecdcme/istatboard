@@ -21,3 +21,13 @@ a:hover{
         color: transparent;
     }
 }
+
+// perfectScrollbar custom styles
+.ps__thumb-y {
+    transition: none;
+    width: 11px;
+}
+.ps__rail-x:hover, .ps__rail-y:hover, .ps__rail-x:focus, .ps__rail-y:focus {
+    background-color: inherit;
+    opacity: 1;
+}
