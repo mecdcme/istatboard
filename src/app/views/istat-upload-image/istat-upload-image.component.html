@@ -24,11 +24,9 @@
        
             <div *ngFor="let item of uploader.queue" class="media">
                 <div class="media-left">
-                    <img src="" imgPreview [image]="item?._file" class="media-object" />
+                    <img src="" imgPreview [image]="item?._file" class="media-object" width="99%" />
                 </div>
-                <div class="media-body">
-                    <p>{{ item?.file?.name }}</p>
-                </div>
+               
             </div>
         
       </div>
