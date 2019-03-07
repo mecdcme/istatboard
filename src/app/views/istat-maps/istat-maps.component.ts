@@ -173,6 +173,17 @@ export class IstatMapsComponent implements OnInit {
     });
 
   }
+
+
+
+
+
+
+
+ 
+
+
+
   viewPopupFeature(feature: any,coordinate:any): any {
      //   document.getElementById('popup').style.display = "inline";
      this.popup.nativeElement.style.display = "inline";
@@ -227,6 +238,9 @@ export class IstatMapsComponent implements OnInit {
     let feat= this.vectorLayerKlm.getSource().getFeatures().find(x => x.get('@id') == idfeat);
     let polygon = feat.getGeometry();
     var center =  feat.getGeometry().getCoordinates()[0];
+
+
+    
     this.viewPopupFeature(feat,center)
     this.view.fit(polygon, { padding: [170, 50, 30, 150]  });
  
