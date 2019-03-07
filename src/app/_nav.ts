@@ -23,7 +23,7 @@ export const navItems = [
   {
     name: 'Food',
     url: '/food',
-    icon: 'fa fa-table'
+    icon: 'fa fa-cutlery'
   }
   
   ,
