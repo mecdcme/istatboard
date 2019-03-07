@@ -37,7 +37,7 @@ export class IstatMapsComponent implements OnInit {
   vectorLayer: OlVectorLayer;
   vectorLayerKlm: OlVectorLayer;
   rome = fromLonLat([12.5, 41.9]);
-  lecce = fromLonLat([18.1728, 40.358]);
+ 
    
   @ViewChild('popup') popup: ElementRef;
   @ViewChild('popupContent') popupContent: ElementRef;
@@ -92,7 +92,7 @@ export class IstatMapsComponent implements OnInit {
 
     this.marker = new Feature({
       // Added fromLonLat
-      geometry: new Point(this.lecce)
+      geometry: new Point(this.rome)
     });
 
     this.vectorSource = new OlVectorSource({
@@ -117,7 +117,7 @@ export class IstatMapsComponent implements OnInit {
     this.view = new OlView({
       //  center: fromLonLat([27.56164, 53.902257]),
       projection: 'EPSG:3857',
-      center: this.lecce,
+      center: this.rome,
       zoom: 9
     });
 
