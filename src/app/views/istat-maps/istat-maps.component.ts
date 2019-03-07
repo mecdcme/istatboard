@@ -46,8 +46,8 @@ export class IstatMapsComponent implements OnInit {
   public rowsFeature:Array<any> = [];
   public rows:Array<any> = [];
   public columnsFeature:Array<any> = [
-    {title: 'ID', name: 'id', sort:true, filtering: {filterString: '', placeholder: 'Filter by Id'} },
-    {title: 'Terrain type', name: 'name',  sort: true, filtering: {filterString: '', placeholder: 'Filter by type'} },
+    {title: 'ID', name: 'id', sort:true  },
+    {title: 'Terrain type', name: 'name',  sort: true },
     {title: 'Center Map', name: 'center' },
   ];
 
@@ -59,8 +59,9 @@ export class IstatMapsComponent implements OnInit {
   public totalItems:number = 0;
   public config:any = {
     paging: true,
+   
     sorting: {columns: this.columnsFeature},
-    filtering: {filterString: ''},
+    //filtering: {filterString: ''},
     className: ['table-striped', 'table-bordered']
   };
   private data:Array<any> = this.rowsFeature;
@@ -159,7 +160,8 @@ export class IstatMapsComponent implements OnInit {
         _thisC.featuresKml = source.getFeatures();
        
         for (  let feat of _thisC.featuresKml   ) {
-          _thisC.rowsFeature.push({id:feat.getId(),name:feat.get('name'),center:_thisC.button(feat.getId())});
+       //   _thisC.rowsFeature.push({id:feat.getId(),name:feat.get('name'),center:_thisC.button(feat.getId())});
+       _thisC.rowsFeature.push({id:feat.get('@id'),name:feat.get('name'),center:_thisC.button(feat.get('@id'))});
        }
        
        _thisC.length = _thisC.rowsFeature.length;
@@ -176,7 +178,8 @@ export class IstatMapsComponent implements OnInit {
      this.popup.nativeElement.style.display = "inline";
 
    
-     this.popupContent.nativeElement.innerHTML = feature.get('description');
+   //  this.popupContent.nativeElement.innerHTML = feature.get('description');
+     this.popupContent.nativeElement.innerHTML = feature.get('name');
 
      let overlay;
      if (this.map.getOverlays().getLength() > 0) {
@@ -220,11 +223,13 @@ export class IstatMapsComponent implements OnInit {
   }
   public centerPolygonId(event) {
     let idfeat: string = event.row.id;
-    let feat= this.vectorLayerKlm.getSource().getFeatureById(idfeat);
+    //     overpassturbo  let feat= this.vectorLayerKlm.getSource().getFeatureById(idfeat); getFeatures()
+    let feat= this.vectorLayerKlm.getSource().getFeatures().find(x => x.get('@id') == idfeat);
     let polygon = feat.getGeometry();
     var center =  feat.getGeometry().getCoordinates()[0];
     this.viewPopupFeature(feat,center)
-     this.view.fit(polygon, { padding: [170, 50, 30, 150],  nearest: true });
+ 
+     this.view.fit(polygon, { padding: [170, 50, 30, 150]  });
  
   }
 
