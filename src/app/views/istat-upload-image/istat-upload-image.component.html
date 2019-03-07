@@ -1,0 +1,46 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-header">
+          Select image...
+           
+        </div>
+        <div class="card-body">
+            <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+
+            <button type="button" class="btn btn-success btn-s" 
+              (click)="uploader.uploadAll()" 
+              [disabled]="!uploader.getNotUploadedItems().length" >
+                  Upload an Image
+            </button>
+        </div>
+      </div>
+  <div class="card-columns cols-2">
+    <div class="card">
+      <div class="card-header">
+        Preview
+        
+      </div>
+      <div class="card-body">
+       
+            <div *ngFor="let item of uploader.queue" class="media">
+                <div class="media-left">
+                    <img src="" imgPreview [image]="item?._file" class="media-object" />
+                </div>
+                <div class="media-body">
+                    <p>{{ item?.file?.name }}</p>
+                </div>
+            </div>
+        
+      </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+          Nutritional facts
+          
+        </div>
+        <div class="card-body">
+          calorie
+        </div>
+      </div>
+    </div>
+    </div>

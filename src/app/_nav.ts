@@ -19,6 +19,14 @@ export const navItems = [
     url: '/hackpivot/EU',
     icon: 'fa fa-table'
   },
+
+  {
+    name: 'Food',
+    url: '/foodimage',
+    icon: 'fa fa-table'
+  }
+  
+  ,
   {
     title: true,
     name: 'Hackaton'

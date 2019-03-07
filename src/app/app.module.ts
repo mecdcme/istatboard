@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2TableModule } from 'ng2-table/ng2-table';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 import { PaginationModule } from 'ng2-bootstrap';  
 import { TabsModule } from 'ng2-bootstrap';
@@ -50,6 +51,8 @@ import { IstatNgtableComponent } from './views/istat-ngtable/istat-ngtable.compo
 import { HackPivotComponent } from './views/hack-pivot/hack-pivot.component';
 import { TimereportComponent } from './views/timereport/timereport.component';
 import { LealeftMapComponent } from './views/lealeft-map/lealeft-map.component';
+import { IstatUploadImageComponent } from './views/istat-upload-image/istat-upload-image.component';
+import { ImagePreview } from './views/istat-upload-image/image-preview.directive';
 
 
 @NgModule({
@@ -67,7 +70,10 @@ import { LealeftMapComponent } from './views/lealeft-map/lealeft-map.component';
     IstatNgtableComponent,
     HackPivotComponent,
     TimereportComponent,
-    LealeftMapComponent
+    LealeftMapComponent,
+    IstatUploadImageComponent,
+    FileSelectDirective,
+    ImagePreview
      ],
   imports: [
     BrowserModule,

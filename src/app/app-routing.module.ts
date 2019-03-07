@@ -15,6 +15,7 @@ import { IstatNgtableComponent } from './views/istat-ngtable/istat-ngtable.compo
 import { HackPivotComponent } from './views/hack-pivot/hack-pivot.component';
 import { TimereportComponent } from './views/timereport/timereport.component';
 import { LealeftMapComponent } from './views/lealeft-map/lealeft-map.component';
+import { IstatUploadImageComponent } from './views/istat-upload-image/istat-upload-image.component';
 
 
 export const routes: Routes = [
@@ -76,6 +77,13 @@ export const routes: Routes = [
         component: IstatMapsComponent,
         data: {
           title: 'Maps'
+        }
+      } , 
+      {
+        path: 'foodimage',
+        component: IstatUploadImageComponent,
+        data: {
+          title: 'Food Recognition'
         }
       } ,
       {
