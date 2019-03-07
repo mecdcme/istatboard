@@ -228,7 +228,7 @@ export class IstatMapsComponent implements OnInit {
     let polygon = feat.getGeometry();
     var center =  feat.getGeometry().getCoordinates()[0];
     this.viewPopupFeature(feat,center)
-     this.view.fit(polygon, { padding: [170, 50, 30, 150],  nearest: true });
+   this.view.fit(polygon, { padding: [170, 50, 30, 150]  });
  
   }
 
