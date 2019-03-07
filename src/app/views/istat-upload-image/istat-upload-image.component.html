@@ -15,14 +15,14 @@
     <div class="card">
       <div class="card-header">Preview</div>
       <div class="card-body">
-        <div *ngFor="let item of uploader.queue" class="media">
-          <div class="media-left">
-            <img src="" imgPreview [image]="item?._file" class="media-object" />
-          </div>
-          <div class="media-body">
-            <p>{{ item?.file?.name }}</p>
-          </div>
-        </div>
+       
+            <div *ngFor="let item of uploader.queue" class="media">
+                <div class="media-left">
+                    <img src="" imgPreview [image]="item?._file" class="media-object" width="99%" />
+                </div>
+               
+            </div>
+        
       </div>
     </div>
     <div class="card">
