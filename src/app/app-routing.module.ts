@@ -80,7 +80,7 @@ export const routes: Routes = [
         }
       } , 
       {
-        path: 'foodimage',
+        path: 'food',
         component: IstatUploadImageComponent,
         data: {
           title: 'Food Recognition'

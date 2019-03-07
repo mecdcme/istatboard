@@ -22,7 +22,7 @@ export const navItems = [
 
   {
     name: 'Food',
-    url: '/foodimage',
+    url: '/food',
     icon: 'fa fa-table'
   }
   
