@@ -53,6 +53,7 @@ import { TimereportComponent } from './views/timereport/timereport.component';
 import { LealeftMapComponent } from './views/lealeft-map/lealeft-map.component';
 import { IstatUploadImageComponent } from './views/istat-upload-image/istat-upload-image.component';
 import { ImagePreview } from './views/istat-upload-image/image-preview.directive';
+import { WelcomeComponent } from './views/welcome/welcome.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { ImagePreview } from './views/istat-upload-image/image-preview.directive
     LealeftMapComponent,
     IstatUploadImageComponent,
     FileSelectDirective,
-    ImagePreview
+    ImagePreview,
+    WelcomeComponent
      ],
   imports: [
     BrowserModule,

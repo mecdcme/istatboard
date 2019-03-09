@@ -6,26 +6,29 @@ export const navItems = [
   },
   {
     title: true,
-    name: 'EUROSTAT'
+    name: 'Hackaton'
   },
   {
-    name: 'Time Report ',
+    name: 'HETUS ',
     url: '/timereport/EU',
     icon: 'icon-pie-chart'
   },
-
+  {
+    name: 'bigO Map',
+    url: '/maps',
+    icon: 'fa fa-map-marker'
+  },
+  {
+    name: 'Food classifier',
+    url: '/food',
+    icon: 'fa fa-cutlery'
+  },
   {
     name: 'Data Grid',
     url: '/hackpivot/EU',
     icon: 'fa fa-table'
   },
-
-  {
-    name: 'Food',
-    url: '/food',
-    icon: 'fa fa-cutlery'
-  }
-  
+  /*
   ,
   {
     title: true,
@@ -88,5 +91,5 @@ export const navItems = [
     name: 'Istat Ng Table',
     url: '/ngTable',
     icon: 'icon-pie-chart'
-  }
+  }*/
 ];

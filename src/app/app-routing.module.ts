@@ -7,6 +7,7 @@ import { IstatContainerComponent } from './istat-container/istat-container.compo
 import { ChartsComponent } from './views/charts/charts.component';
 import { ScatterplotComponent } from './views/scatterplot/scatterplot.component';
 import { IstatMapsComponent } from './views/istat-maps/istat-maps.component';
+import { WelcomeComponent } from './views/welcome/welcome.component';
 import { IstatPivotGridComponent } from './views/istat-pivot-grid/istat-pivot-grid.component';
 
 
@@ -28,7 +29,7 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     data: {
-      title: 'Home'
+      title: 'Eurostat Big Data Hackaton'
     }
   },
   {
@@ -36,6 +37,13 @@ export const routes: Routes = [
     component: TeamComponent,
     data: {
       title: 'Our Team'
+    }
+  },
+  {
+    path: 'welcome',
+    component: WelcomeComponent,
+    data: {
+      title: 'Welcome to Istat Dashboard'  
     }
   },
   {
