@@ -54,6 +54,7 @@ import { LealeftMapComponent } from './views/lealeft-map/lealeft-map.component';
 import { IstatUploadImageComponent } from './views/istat-upload-image/istat-upload-image.component';
 import { ImagePreview } from './views/istat-upload-image/image-preview.directive';
 import { WelcomeComponent } from './views/welcome/welcome.component';
+import { ArchitectureComponent } from './views/architecture/architecture.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { WelcomeComponent } from './views/welcome/welcome.component';
     IstatUploadImageComponent,
     FileSelectDirective,
     ImagePreview,
-    WelcomeComponent
+    WelcomeComponent,
+    ArchitectureComponent
      ],
   imports: [
     BrowserModule,

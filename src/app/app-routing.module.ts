@@ -10,7 +10,7 @@ import { IstatMapsComponent } from './views/istat-maps/istat-maps.component';
 import { WelcomeComponent } from './views/welcome/welcome.component';
 import { IstatPivotGridComponent } from './views/istat-pivot-grid/istat-pivot-grid.component';
 
-
+import { ArchitectureComponent } from './views/architecture/architecture.component';
 import { IstatGridMapComponent } from './views/istat-grid-map/istat-grid-map.component';
 import { IstatNgtableComponent } from './views/istat-ngtable/istat-ngtable.component';
 import { HackPivotComponent } from './views/hack-pivot/hack-pivot.component';
@@ -33,6 +33,13 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'architecture',
+    component: ArchitectureComponent,
+    data: {
+      title: 'Architecture'
+    }
+  },
+  {
     path: 'team',
     component: TeamComponent,
     data: {
@@ -43,7 +50,7 @@ export const routes: Routes = [
     path: 'welcome',
     component: WelcomeComponent,
     data: {
-      title: 'Welcome to Istat Dashboard'  
+      title: 'Welcome to SMart Use of TIme Statistics (SMOTIS)'  
     }
   },
   {
@@ -98,7 +105,7 @@ export const routes: Routes = [
         path: 'hackpivot/:source',
         component: HackPivotComponent,
         data: {
-          title: 'Hack Pivot'
+          title: 'Analytics'
         } 
       }  
       ,
@@ -106,7 +113,7 @@ export const routes: Routes = [
         path: 'timereport/:source',
         component: TimereportComponent,
         data: {
-          title: 'Hack time'
+          title: 'Charts'
         }  
       } ,
       {
