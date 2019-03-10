@@ -18,16 +18,22 @@
     <div class="card-header">Food List
       <div class="pull-right">
         <a style="cursor: pointer; " (click)="loadFoods();"> <i class="fa fa-refresh"></i></a>
+
       </div>
+
     </div>
     <div class="card-body">
       <div>
+
+
         <table class="table table-responsive-sm table-bordered table-striped table-sm">
           <tr>
-            <th>Input data</th>
+
+            <th colspan="2">Input data</th>
             <th colspan="6" class="text-center">Result elaboration </th>
           </tr>
           <tr>
+            <th>ID</th>
             <th>File</th>
             <th>Food Classified</th>
             <th>Protein</th>
@@ -36,33 +42,40 @@
             <th>Calories</th>
             <th> </th>
           </tr>
-          <tr *ngFor="let food of foodLoadedList">
+          <tr *ngFor="let food of foodLoadedList; let i = index">
+            <td>{{i+1}}</td>
             <td>{{food.img}}</td>
             <td>{{food.prev.food}}</td>
             <td>{{food.prev.TotalProtein  | number : '1.2'}}</td>
             <td>{{food.prev.TotalSugar  | number : '1.2'}}</td>
             <td>{{food.prev.TotalSatFat  | number : '1.2'}}</td>
             <td>{{food.prev.TotalCalories  | number : '1.2'}}</td>
-            <td class="text-center">
+            <td>
               <span style="cursor: pointer; " (click)="openDetails(food);"><i class="fa fa-search"></i> </span>
             </td>
           </tr>
         </table>
+
+
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-8">
       <div class="card">
         <div class="card-header">Preview</div>
         <div class="card-body">
+
+
           <div *ngIf="selectedFoodImg">
-            <img [src]="'http://localhost:8080/api/foodfiles/'+selectedFoodImg" width="100%" />
+            <img [src]="'http://localhost:8080/api/foodfiles/'+selectedFoodImg" width="99%" />
+
           </div>
+
         </div>
       </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-4">
       <div class="card">
         <div class="card-header">Nutritional facts</div>
         <div class="card-body">
@@ -107,7 +120,7 @@
             </table>
             <div *ngIf="selectedFood.prob">
               <br />
-              <table class="table table-sm">
+              <table class="table table-sm" >
                 <tr>
                   <th>Prevision</th>
                   <th>Prob</th>

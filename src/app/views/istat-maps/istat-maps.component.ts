@@ -38,6 +38,7 @@ export class IstatMapsComponent implements OnInit {
   vectorSource: OlVectorSource;
   vectorLayer: OlVectorLayer;
   vectorLayerKlm: OlVectorLayer;
+  vectorLayerKlmPoint: OlVectorLayer;
   rome = fromLonLat([12.5, 41.9]);
 
 
@@ -57,7 +58,13 @@ export class IstatMapsComponent implements OnInit {
 
     this.vectorLayerKlm = new OlVectorLayer({
       source: new OlVectorSource({
-        url: 'assets/data/kml/doc.kml',
+        url: 'assets/data/kml/layer1.kml',
+        format: new OlKML()
+      })
+    });
+    this.vectorLayerKlmPoint = new OlVectorLayer({
+      source: new OlVectorSource({
+        url: 'assets/data/kml/poi.kml',
         format: new OlKML()
       })
     });
@@ -94,14 +101,14 @@ export class IstatMapsComponent implements OnInit {
       //  center: fromLonLat([27.56164, 53.902257]),
       projection: 'EPSG:3857',
       center: this.rome,
-      zoom: 9
+      zoom: 12
     });
 
     this.map = new OlMap({
       target: 'map',
       //   overlays: [this.overlay],
       // Added both layers
-      layers: [this.layer, this.vectorLayerKlm],
+      layers: [this.layer, this.vectorLayerKlm, this.vectorLayerKlmPoint],
       view: this.view
     });
 
@@ -113,7 +120,7 @@ export class IstatMapsComponent implements OnInit {
 
         return;
       }
-      let desc = features[0].get('descr');
+      let desc = features[0].get('name');
         _thisC.info = desc;
 
 
