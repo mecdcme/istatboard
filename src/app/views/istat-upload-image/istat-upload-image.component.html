@@ -29,11 +29,11 @@
         <table class="table table-responsive-sm table-bordered table-striped table-sm">
           <tr>
 
-            <th>Input data</th>
+            <th colspan="2">Input data</th>
             <th colspan="6" class="text-center">Result elaboration </th>
           </tr>
           <tr>
-
+            <th>ID</th>
             <th>File</th>
             <th>Food Classified</th>
             <th>Protein</th>
@@ -42,8 +42,8 @@
             <th>Calories</th>
             <th> </th>
           </tr>
-          <tr *ngFor="let food of foodLoadedList">
-
+          <tr *ngFor="let food of foodLoadedList; let i = index">
+            <td>{{i+1}}</td>
             <td>{{food.img}}</td>
             <td>{{food.prev.food}}</td>
             <td>{{food.prev.TotalProtein  | number : '1.2'}}</td>
