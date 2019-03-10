@@ -17,7 +17,7 @@
   <div class="card">
     <div class="card-header">Food List
       <div class="pull-right">
-        <a role="button" (click)="loadFoods();"> <i class="fa fa-refresh"></i></a>
+        <a style="cursor: pointer; " (click)="loadFoods();"> <i class="fa fa-refresh"></i></a>
 
       </div>
 
@@ -51,7 +51,7 @@
             <td>{{food.prev.TotalSatFat  | number : '1.2'}}</td>
             <td>{{food.prev.TotalCalories  | number : '1.2'}}</td>
             <td>
-              <span role="button" (click)="openDetails(food);"><i class="fa fa-search"></i> </span>
+              <span style="cursor: pointer; " (click)="openDetails(food);"><i class="fa fa-search"></i> </span>
             </td>
           </tr>
         </table>
