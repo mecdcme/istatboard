@@ -11,6 +11,9 @@ import OlVectorSource from 'ol/source/Vector';
 import OlVectorLayer from 'ol/layer/Vector';
 import OlKML from 'ol/format/KML';
 import Overlay from 'ol/Overlay';
+import Style from 'ol/style/Style';
+import Icon from 'ol/style/Icon';
+
 
 
 import { fromLonLat } from 'ol/proj';
@@ -64,7 +67,8 @@ export class IstatMapsComponent implements OnInit {
 
     this.marker = new Feature({
       // Added fromLonLat
-      geometry: new Point(this.rome)
+      geometry: new Point(this.rome),
+     
     });
 
     this.vectorSource = new OlVectorSource({
