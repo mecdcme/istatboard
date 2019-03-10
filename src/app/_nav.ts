@@ -9,25 +9,25 @@ export const navItems = [
     name: 'Hackaton'
   },
   {
-    name: 'HETUS ',
+    name: 'Charts',
     url: '/timereport/EU',
-    icon: 'icon-pie-chart'
+    icon: 'fa fa-pie-chart'
   },
   {
-    name: 'bigO Map',
+    name: 'Maps',
     url: '/maps',
     icon: 'fa fa-map-marker'
+  },
+  {
+    name: 'Analytics',
+    url: '/hackpivot/EU',
+    icon: 'fa fa-table'
   },
   {
     name: 'Food classifier',
     url: '/food',
     icon: 'fa fa-cutlery'
-  },
-  {
-    name: 'Data Grid',
-    url: '/hackpivot/EU',
-    icon: 'fa fa-table'
-  },
+  }
   /*
   ,
   {
