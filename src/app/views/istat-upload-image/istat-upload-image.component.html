@@ -1,10 +1,10 @@
 <div class="animated fadeIn">
-  <div class="card">
+  <div *ngIf="showUpload" class="card">
     <div class="card-header">Choose an image</div>
     <div class="card-body">
       <div class="custom-file">
         <input type="file" class="custom-file-input" name="photo" ng2FileSelect [uploader]="uploader" />
-        <label class="custom-file-label" for="customFile"> 
+        <label class="custom-file-label" for="customFile">
           <p *ngIf="uploader.queue.length == 0">Choose a file</p>
           <p *ngFor="let item of uploader.queue">{{ item?.file?.name }}</p>
         </label>
@@ -14,21 +14,125 @@
       </button>
     </div>
   </div>
-  <div class="card-columns cols-2">
-    <div class="card">
-      <div class="card-header">Preview</div>
-      <div class="card-body">
-            <div *ngFor="let item of uploader.queue" class="media">
-                <div class="media-left">
-                    <img src="" imgPreview [image]="item?._file" class="media-object" width="99%" />
-                </div>               
-            </div>
+  <div class="card">
+    <div class="card-header">Food List
+      <div class="pull-right">
+        <a role="button" (click)="loadFoods();"> <i class="fa fa-refresh"></i></a>
+
+      </div>
+
+    </div>
+    <div class="card-body">
+      <div>
+
+
+        <table class="table table-responsive-sm table-bordered table-striped table-sm">
+          <tr>
+
+            <th>Input data</th>
+            <th colspan="6" class="text-center">Result elaboration </th>
+          </tr>
+          <tr>
+
+            <th>File</th>
+            <th>Food Classified</th>
+            <th>Protein</th>
+            <th>Sugar</th>
+            <th>Saturated Fat</th>
+            <th>Calories</th>
+            <th> </th>
+          </tr>
+          <tr *ngFor="let food of foodLoadedList">
+
+            <td>{{food.img}}</td>
+            <td>{{food.prev.food}}</td>
+            <td>{{food.prev.TotalProtein  | number : '1.2'}}</td>
+            <td>{{food.prev.TotalSugar  | number : '1.2'}}</td>
+            <td>{{food.prev.TotalSatFat  | number : '1.2'}}</td>
+            <td>{{food.prev.TotalCalories  | number : '1.2'}}</td>
+            <td>
+              <span role="button" (click)="openDetails(food);"><i class="fa fa-search"></i> </span>
+            </td>
+          </tr>
+        </table>
+
+
       </div>
     </div>
-    <div class="card">
-      <div class="card-header">Nutritional facts</div>
-      <div class="card-body">
-        calorie
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">Preview</div>
+        <div class="card-body">
+
+
+          <div *ngIf="selectedFoodImg">
+            <img [src]="'http://localhost:8080/api/foodfiles/'+selectedFoodImg" width="99%" />
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">Nutritional facts</div>
+        <div class="card-body">
+          <div *ngIf="selectedFood">
+            <table class="table table-sm">
+              <tr>
+                <th>Prevision:</th>
+                <td>{{selectedFood.prev.food}}</td>
+              </tr>
+              <tr>
+                <th>Protein:</th>
+                <td>{{selectedFood.prev.TotalProtein | number : '1.2'}}</td>
+              </tr>
+              <tr>
+                <th>Sugar:</th>
+                <td>{{selectedFood.prev.TotalSugar | number : '1.2'}}</td>
+              </tr>
+              <tr>
+                <th>Saturated Fat:</th>
+                <td>{{selectedFood.prev.TotalSatFat | number : '1.2'}}</td>
+              </tr>
+              <tr>
+                <th>Calories</th>
+                <td>{{selectedFood.prev.TotalCalories | number : '1.2'}}</td>
+              </tr>
+              <tr>
+                <th>Calcium</th>
+                <td>{{selectedFood.prev.TotalCalcium | number : '1.2'}}</td>
+              </tr>
+              <tr>
+                <th> Carbohydrate</th>
+                <td>{{selectedFood.prev.TotalCarbohydrate | number : '1.2'}}</td>
+              </tr>
+              <tr>
+                <th> Fat:</th>
+                <td>{{selectedFood.prev.TotalFat | number : '1.2'}}</td>
+              </tr>
+              <tr>
+                <th> Fiber:</th>
+                <td>{{selectedFood.prev.TotalFiber | number : '1.2'}}</td>
+              </tr>
+            </table>
+            <div *ngIf="selectedFood.prob">
+              <br />
+              <table class="table table-sm" >
+                <tr>
+                  <th>Prevision</th>
+                  <th>Prob</th>
+                </tr>
+                <tr *ngFor="let prob of selectedFood.prob | keyvalue">
+                  <td>{{prob.key}}</td>
+                  <td>{{prob.value | number : '1.2' }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
