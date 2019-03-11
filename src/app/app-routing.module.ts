@@ -29,7 +29,7 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     data: {
-      title: 'Eurostat Big Data Hackaton'
+      title: 'Welcome to SMart Use of TIme Statistics (SMUTIS)'
     }
   },
   {
@@ -50,7 +50,7 @@ export const routes: Routes = [
     path: 'welcome',
     component: WelcomeComponent,
     data: {
-      title: 'Welcome to SMart Use of TIme Statistics (SMOTIS)'  
+      title: 'Welcome to SMart Use of TIme Statistics (SMUTIS)'  
     }
   },
   {

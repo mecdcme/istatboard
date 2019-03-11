@@ -19,7 +19,7 @@ export class TimereportComponent implements OnInit {
   public lineChartLabels: Array<any> = [];
   public fieldsFilter: Array<any> = [];
   chartTypeListAll: any[] = [{ caption: "Bar", value: "bar", stack: "false" }, { caption: "Bar Stacked", value: "bar", stack: "false" }, { caption: "H Bar", value: "horizontalBar", stack: "false" }, { caption: "Line", value: "line", stack: "false" }, { caption: "Doughnut", value: "doughnut", stack: "false" }, { caption: "Pie", value: "pie", stack: "false" }, { caption: "Radar", value: "Radar", stack: "false" }, { caption: "PolarArea", value: "polarArea", stack: "false" }];
-  chartTimeList: any[] = [{ caption: "Bar", value: "bar", stack: false }, { caption: "Line", value: "line", stack: false }, { caption: "Bar Stacked", value: "bar", stack: true }, { caption: "Bar Horizontal", value: "horizontalBar", stack: false }, { caption: "Bar Stacked Horizontal", value: "horizontalBar", stack: true }];
+  chartTimeList: any[] = [{ caption: "Doughnut", value: "doughnut", stack: false  }, { caption: "Pie", value: "pie", stack: false  },{ caption: "Bar", value: "bar", stack: false }, { caption: "Line", value: "line", stack: false }, { caption: "Bar Stacked", value: "bar", stack: true }, { caption: "Bar Horizontal", value: "horizontalBar", stack: false }, { caption: "Bar Stacked Horizontal", value: "horizontalBar", stack: true }];
   chartPieList: any[] = [{ caption: "Doughnut", value: "doughnut" }, { caption: "Pie", value: "pie" }, { caption: "Radar", value: "Radar" }, { caption: "PolarArea", value: "polarArea" }];
 
   //reportList: any[]= [  {caption: "eu_activity_time_hour",value: "eu_activity_time_hour"},{caption: "eu_activity_time", value: "eu_activity_time_hour" }, {caption: "eu_sex_time",value: "eu_sex_time"}, {caption: "eu_sex_time_hour",value: "eu_sex_time_hour"}];
@@ -114,12 +114,14 @@ export class TimereportComponent implements OnInit {
     this.ihackservice.getGenericReport(this.reportSel.id, this.reportSel.query_type, params).subscribe(results => {
 
       if (results.length > 0) {
+        if(this.reportSel.report_type=='PIE')  this.updatePieReport(results);
+        else
         this.updateChartReport(results);
       }
       else {
         let elem = { data: [], label: 'No Data' };
-        this.lineChartData.push(elem);
-        this.lineChartLabels = [];
+       // this.lineChartData.push(elem);
+        //this.lineChartLabels = [];
 
       }
 
@@ -170,6 +172,45 @@ export class TimereportComponent implements OnInit {
     }
     this.lineChartLabels = _lineChartLabel_s;
 
+  }
+  public updatePieReport(resultList) {
+
+    let elem = { data: [] };
+    this.lineChartData.push(elem);
+    let _lineChartLabel_s: Array<any> = [];
+
+    //primo elemento
+
+    let jsonEntry ;
+    let arr_nitems: Array<any> = [];
+    let keys ;
+    let firstKey ;
+    let key;
+    let indexk: number = 0;
+    //  let today = new Date();
+    // today.setHours(jsonEntry[firstKey]);
+    //_lineChartLabel_s.push(today);
+    //_lineChartLabel_s.push(jsonEntry[firstKey]);
+    
+    // resultList.length
+    for (let indexa = 0; indexa < resultList.length; indexa++) {
+      jsonEntry = resultList[indexa];
+       keys = Object.keys(jsonEntry);
+      for (let indexk = 2; indexk < keys.length; indexk++) {
+        let keyk = keys[indexk];
+        //let p = new Point(jsonEntry[firstKey], jsonEntry[keyk]);
+        let p = jsonEntry[keyk];
+        this.lineChartData[0].data.push(p);
+        _lineChartLabel_s.push(keyk);
+      }
+      //    let today = new Date();
+      //   today.setHours(jsonEntry[firstKey]);
+      // _lineChartLabel_s.push(today);
+  
+    }
+    this.lineChartLabels = _lineChartLabel_s;
+console.log(this.lineChartLabels);
+console.log(this.lineChartData);
   }
 
   // events
