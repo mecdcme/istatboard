@@ -109,7 +109,7 @@ export class IstatMapsComponent implements OnInit {
       //   overlays: [this.overlay],
       // Added both layers
       layers: [this.layer, this.vectorLayerKlm, this.vectorLayerKlmPoint],
-      view: this.view
+      view: this.view,
     });
 
     //  this.map.on('singleclick', function(evt) {
